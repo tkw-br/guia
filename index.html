@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Completo de Taekwondo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+        .tab-btn.active {
+            color: #2563eb; /* blue-600 */
+            border-bottom-color: #2563eb;
+        }
+        .content-section {
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+            padding: 0 1.5rem;
+        }
+        .accordion-content.open {
+            padding: 1.5rem;
+        }
+        .accordion-header .chevron {
+            transition: transform 0.3s ease-in-out;
+        }
+        .accordion-header.open .chevron {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 max-w-4xl">
+        
+        <header class="text-center mb-6">
+            <h1 class="text-3xl sm:text-4xl font-bold text-blue-600">Guia Completo de Taekwondo 🥋</h1>
+            <p class="mt-2 text-gray-600">O manual definitivo para o praticante.</p>
+        </header>
+
+        <!-- Menu de Navegação -->
+        <nav class="bg-white rounded-lg shadow-md mb-8 sticky top-2 z-10">
+            <div class="flex justify-center sm:justify-around border-b border-gray-200 flex-wrap">
+                <button data-tab="curriculum" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Currículo</button>
+                <button data-tab="tools" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Ferramentas</button>
+                <button data-tab="principles" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Princípios</button>
+                <button data-tab="glossary" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Glossário</button>
+                <button data-tab="history" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">História</button>
+                <button data-tab="numbers" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Números</button>
+            </div>
+        </nav>
+
+        <!-- Seção do Currículo -->
+        <section id="curriculum" class="content-section">
+            <!-- Card "Você Sabia?" -->
+            <div id="factCard" class="bg-white p-4 rounded-lg shadow-md mb-6 border-l-4 border-blue-500">
+                <!-- Fato aleatório será injetado aqui -->
+            </div>
+            <div class="mb-8">
+                <input type="text" id="searchInput"
+                       class="w-full p-4 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+                       placeholder="Pesquisar por técnica no currículo...">
+            </div>
+            <div id="beltList" class="space-y-4"></div>
+            <div id="noResults" class="hidden text-center py-16">
+                <p class="text-xl text-gray-500">Nenhuma técnica encontrada. Tente outra busca! 😉</p>
+            </div>
+        </section>
+
+        <!-- Seção de Ferramentas -->
+        <section id="tools" class="content-section bg-white p-6 sm:p-8 rounded-lg shadow-md"></section>
+
+        <!-- Seção de Princípios -->
+        <section id="principles" class="content-section bg-white p-6 sm:p-8 rounded-lg shadow-md"></section>
+
+        <!-- Seção de Glossário -->
+        <section id="glossary" class="content-section bg-white p-6 sm:p-8 rounded-lg shadow-md"></section>
+
+        <!-- Seção de História -->
+        <section id="history" class="content-section bg-white p-6 sm:p-8 rounded-lg shadow-md"></section>
+
+        <!-- Seção de Números -->
+        <section id="numbers" class="content-section bg-white p-6 sm:p-8 rounded-lg shadow-md"></section>
+
+    </div>
+
+    <script>
+        // --- BANCO DE DADOS COMPLETO ---
+        const db = {
+            facts: [
+                "O Taekwondo é a arte marcial mais praticada no mundo, com mais de 70 milhões de praticantes.",
+                "O Dobok, uniforme do Taekwondo, é sempre branco para simbolizar a pureza e a paz.",
+                "O General Choi Hong Hi é considerado o 'Pai do Taekwondo'.",
+                "A quebra de tábuas (Kyokpa) não é só força, mas precisão, velocidade e foco.",
+                "O chute mais rápido já registrado no Taekwondo ultrapassou 200 km/h."
+            ],
+            curriculum: [
+                // GUBs
+                { belt: 'Branca (10º GUB) ☰', color: 'bg-white', textColor: 'text-black', borderColor: 'border-gray-300', techniques: [ { korean: 'Ap Seogi', pronunciation: 'AP SO-guí', translation: 'Base de Andar' }, { korean: 'Juchum Seogi', pronunciation: 'DJU-tchum SO-guí', translation: 'Base do Cavaleiro' }, { korean: 'Ap Kubi', pronunciation: 'AP KU-bí', translation: 'Base Frontal Longa' }, { korean: 'Arae Makki', pronunciation: 'A-ré MA-quí', translation: 'Defesa Baixa' }, { korean: 'Momtong An Makki', pronunciation: 'MOM-tong AN MA-quí', translation: 'Defesa de Tronco (dentro)' }, { korean: 'Olgul Makki', pronunciation: 'OL-gul MA-quí', translation: 'Defesa Alta' }, { korean: 'Momtong Jireugi', pronunciation: 'MOM-tong DJI-ru-guí', translation: 'Soco no Tronco' }, { korean: 'Ap Chagi', pronunciation: 'AP TCHA-guí', translation: 'Chute Frontal' } ] },
+                { belt: 'Laranja (9º GUB) ☱', color: 'bg-orange-400', textColor: 'text-white', borderColor: 'border-orange-600', techniques: [ { korean: 'Arae Hechyo Makki', pronunciation: 'A-ré RÉ-tchiô MA-quí', translation: 'Defesa Baixa Dupla para Fora' }, { korean: 'Olgul Jireugi', pronunciation: 'OL-gul DJI-ru-guí', translation: 'Soco no Rosto' }, { korean: 'An Chagi', pronunciation: 'AN TCHA-guí', translation: 'Chute para Dentro' }, { korean: 'Bakat Chagi', pronunciation: 'BA-kat TCHA-guí', translation: 'Chute para Fora' } ] },
+                { belt: 'Amarela (8º GUB) ☲', color: 'bg-yellow-300', textColor: 'text-black', borderColor: 'border-yellow-500', techniques: [ { korean: 'Dwit Kubi', pronunciation: 'DUÍT KU-bí', translation: 'Base Traseira (em "L")' }, { korean: 'Momtong Bakat Makki', pronunciation: 'MOM-tong BA-kat MA-quí', translation: 'Defesa de Tronco (fora)' }, { korean: 'Sonnal Momtong Makki', pronunciation: 'SON-nál MOM-tong MA-quí', translation: 'Defesa de Tronco com Faca da Mão' }, { korean: 'Dollyo Chagi', pronunciation: 'DOL-liô TCHA-guí', translation: 'Chute Semicircular' }, { korean: 'Naeryo Chagi', pronunciation: 'NÉ-rio TCHA-guí', translation: 'Chute Descendente' } ] },
+                { belt: 'Amarela P. Verde (7º GUB) ☳', color: 'bg-yellow-300', textColor: 'text-black', borderColor: 'border-green-500', techniques: [ { korean: 'Bakat Palmok Momtong Makki', pronunciation: 'BA-kat PAL-mok MOM-tong MA-quí', translation: 'Defesa de Tronco com Antebraço Externo' }, { korean: 'Dubeon Momtong Jireugi', pronunciation: 'DU-bon MOM-tong DJI-ru-guí', translation: 'Soco Duplo no Tronco' }, { korean: 'Mireo Chagi', pronunciation: 'MI-ró TCHA-guí', translation: 'Chute Empurrando' } ] },
+                { belt: 'Verde (6º GUB) ☴', color: 'bg-green-500', textColor: 'text-white', borderColor: 'border-green-700', techniques: [ { korean: 'Sonnal Arae Makki', pronunciation: 'SON-nál A-ré MA-quí', translation: 'Defesa Baixa com Faca da Mão' }, { korean: 'Batangson Momtong Makki', pronunciation: 'BA-tang-son MOM-tong MA-quí', translation: 'Defesa de Tronco com Palma da Mão' }, { korean: 'Yeop Chagi', pronunciation: 'IÓP TCHA-guí', translation: 'Chute Lateral' }, { korean: 'Dwit Chagi', pronunciation: 'DUÍT TCHA-guí', translation: 'Chute para Trás (Coice)' } ] },
+                { belt: 'Verde P. Azul (5º GUB) ☵', color: 'bg-green-500', textColor: 'text-white', borderColor: 'border-blue-500', techniques: [ { korean: 'Ap Kubi Olgul Bakat Palmok Makki', pronunciation: 'AP KU-bí OL-gul BA-kat PAL-mok MA-quí', translation: 'Defesa Alta para Fora em Base Frontal' }, { korean: 'Palkup Dollyo Chigi', pronunciation: 'PAL-kup DOL-liô TCHI-guí', translation: 'Cotovelada Circular' } ] },
+                { belt: 'Azul (4º GUB) ☶', color: 'bg-blue-500', textColor: 'text-white', borderColor: 'border-blue-700', techniques: [ { korean: 'Gawi Makki', pronunciation: 'GA-uÍ MA-quí', translation: 'Defesa Tesoura' }, { korean: 'Hechyo Makki', pronunciation: 'RÉ-tchiô MA-quí', translation: 'Defesa Dupla para Fora' }, { korean: 'Palkup Pyojeok Chigi', pronunciation: 'PAL-kup PIÔ-djok TCHI-guí', translation: 'Cotovelada no Alvo (palma da mão)' }, { korean: 'Bandal Chagi', pronunciation: 'BAN-dal TCHA-guí', translation: 'Chute Crescente' }, { korean: 'Huryo Chagi', pronunciation: 'RU-riô TCHA-guí', translation: 'Chute Gancho' } ] },
+                { belt: 'Azul P. Vermelha (3º GUB) ☷', color: 'bg-blue-500', textColor: 'text-white', borderColor: 'border-red-600', techniques: [ { korean: 'Godureo Momtong Makki', pronunciation: 'GO-du-rô MOM-tong MA-quí', translation: 'Defesa de Tronco com Suporte' }, { korean: 'Deung Jumeok Olgul Ap Chigi', pronunciation: 'DUNG DJU-mok OL-gul AP TCHI-guí', translation: 'Ataque Frontal no Rosto com Costas da Mão' } ] },
+                { belt: 'Vermelha (2º GUB)', color: 'bg-red-600', textColor: 'text-white', borderColor: 'border-red-800', techniques: [ { korean: 'Oesanteul Makki', pronunciation: 'UÊ-san-tul MA-quí', translation: 'Defesa de Montanha Solitária' }, { korean: 'Me Jumeok Naeryo Chigi', pronunciation: 'MÉ DJU-mok NÉ-rio TCHI-guí', translation: 'Golpe Martelo Descendente' }, { korean: 'Ttwieo Ap Chagi', pronunciation: 'TUÍ-ô AP TCHA-guí', translation: 'Chute Frontal Saltando' }, { korean: 'Ttwieo Yeop Chagi', pronunciation: 'TUÍ-ô IÓP TCHA-guí', translation: 'Chute Lateral Saltando' } ] },
+                { belt: 'Vermelha P. Preta (1º GUB)', color: 'bg-red-600', textColor: 'text-white', borderColor: 'border-black', techniques: [ { korean: 'Pyonsonkeut Sewo Tzireugi', pronunciation: 'PIÓN-son-kut SÉ-uô TZI-ru-guí', translation: 'Ataque com Ponta dos Dedos na Vertical' }, { korean: 'Ttwieo Dollyo Chagi', pronunciation: 'TUÍ-ô DOL-liô TCHA-guí', translation: 'Chute Semicircular Saltando' }, { korean: 'Ttwieo Dwit Chagi', pronunciation: 'TUÍ-ô DUÍT TCHA-guí', translation: 'Chute para Trás Saltando' } ] },
+                // DANs
+                { belt: 'Preta 1º DAN (Jo-Kyo-Nim)', color: 'bg-gray-800', textColor: 'text-white', borderColor: 'border-yellow-400', techniques: [ { korean: 'Poomsae Koryo', pronunciation: 'PUM-sê CO-riô', translation: 'Foco em precisão e espírito de luta.' } ] },
+                { belt: 'Preta 2º DAN (Kyo-Sa-Nim)', color: 'bg-gray-800', textColor: 'text-white', borderColor: 'border-yellow-400', techniques: [ { korean: 'Poomsae Keumgang', pronunciation: 'PUM-sê KUM-gang', translation: 'Foco em força e estabilidade.' } ] },
+                { belt: 'Preta 3º DAN (Kyo-Sa-Nim)', color: 'bg-gray-800', textColor: 'text-white', borderColor: 'border-yellow-400', techniques: [ { korean: 'Poomsae Taebaek', pronunciation: 'PUM-sê TÉ-bek', translation: 'Foco em fluidez e agilidade.' } ] },
+                { belt: 'Preta 4º DAN (Sa-Bum-Nim)', color: 'bg-gray-800', textColor: 'text-white', borderColor: 'border-yellow-400', techniques: [ { korean: 'Poomsae Pyongwon & Sipjin', pronunciation: 'PUM-sê PIÓN-uon e SIP-djin', translation: 'Início do mestrado, foco em paz e longevidade.' } ] },
+                { belt: 'Preta 5º DAN (Sa-Bum-Nim)', color: 'bg-gray-800', textColor: 'text-white', borderColor: 'border-yellow-400', techniques: [ { korean: 'Poomsae Jitae', pronunciation: 'PUM-sê DJI-té', translation: 'Representa a terra, foco em conexão e poder.' } ] },
+                { belt: 'Preta 6º DAN (Sa-Bum-Nim)', color: 'bg-gray-800', textColor: 'text-white', borderColor: 'border-yellow-400', techniques: [ { korean: 'Poomsae Chonkwon', pronunciation: 'PUM-sê TCHON-kuon', translation: 'Representa o céu, foco em movimentos grandiosos.' } ] },
+                { belt: 'Preta 7º DAN (Kwan-Jang-Nim)', color: 'bg-gray-800', textColor: 'text-white', borderColor: 'border-yellow-400', techniques: [ { korean: 'Poomsae Hansu', pronunciation: 'PUM-sê RAN-su', translation: 'Representa a água, foco em adaptabilidade e fluidez.' } ] },
+                { belt: 'Preta 8º DAN (Kwan-Jang-Nim)', color: 'bg-gray-800', textColor: 'text-white', borderColor: 'border-yellow-400', techniques: [ { korean: 'Poomsae Ilyeo', pronunciation: 'PUM-sê IL-liô', translation: 'Representa a união da mente e do corpo.' } ] },
+                { belt: 'Preta 9º DAN (Chong-Kwan-Jang-Nim)', color: 'bg-gray-800', textColor: 'text-white', borderColor: 'border-yellow-400', techniques: [ { korean: 'Grão-Mestre', pronunciation: 'GRÃN-MES-tre', translation: 'Legado, filosofia e a personificação da arte.' } ] }
+            ],
+            tools: {
+                meditation: [
+                    { title: 'Respiração Abdominal (Gibon Sume Swigi)', steps: ['Sente-se confortavelmente com a coluna ereta.', 'Coloque uma mão no peito e outra no abdômen.', 'Inspire lentamente pelo nariz, sentindo o abdômen expandir. O peito deve mover-se minimamente.', 'Expire lentamente pela boca, sentindo o abdômen contrair.', 'Repita por 3-5 minutos, focando no fluxo de ar.'] },
+                    { title: 'Meditação de Foco (Myeong-sang)', steps: ['Encontre uma posição confortável.', 'Feche os olhos suavemente.', 'Concentre-se em sua respiração ou em um ponto focal (como uma vela).', 'Quando pensamentos surgirem, reconheça-os sem julgamento e retorne o foco à sua respiração.', 'Comece com 5 minutos e aumente gradualmente o tempo.'] }
+                ]
+            },
+            history: [
+                { title: '🏛️ As Origens Ancestrais e as Artes Marciais Coreanas Primitivas', content: 'A jornada do Taekwondo começa na antiguidade, durante o <strong>Período dos Três Reinos (Goguryeo, Baekje e Silla)</strong>. A necessidade de defesa e o contexto militar levaram ao desenvolvimento de artes de combate desarmado. A mais antiga forma documentada é o <strong>Subak</strong>, evidenciado em murais que mostram guerreiros em posturas de luta. Em Silla, a arte evoluiu para o <strong>Taekkyeon</strong>, uma prática mais focada em chutes e movimentos fluidos, adotada pela tropa de elite <strong>Hwarang</strong>, que combinava treinamento marcial com princípios filosóficos. Durante a <strong>Dinastia Goryeo</strong>, o Taekkyeon se popularizou, mas na <strong>Dinastia Joseon</strong>, com a ênfase no confucionismo, as artes marciais perderam prestígio, sendo preservadas apenas em manuais militares como o <strong>Muye Dobo Tongji</strong>.' },
+                { title: '🇯🇵 O Período Sombrio: A Ocupação Japonesa (1910-1945)', content: 'Este foi um período de grande repressão. O governo colonial japonês <strong>proibiu a prática de todas as artes e manifestações culturais coreanas</strong>, incluindo o Taekkyeon. O objetivo era apagar a identidade nacional. Paradoxalmente, a proibição forçou a prática clandestina e a adaptação. Muitos coreanos que foram para o Japão aprenderam artes como o <strong>Karatê</strong> e o <strong>Judô</strong>. Ao retornarem, eles secretamente mesclaram essas novas técnicas com os movimentos fluidos e os chutes do Taekkyeon, criando uma base técnica híbrida e resiliente que se tornaria fundamental para o futuro da arte.' },
+                { title: '🇰🇷 O Renascimento e a Unificação (Pós-1945)', content: 'Com a <strong>Libertação da Coreia</strong> em 1945, um fervor nacionalista tomou conta do país. Mestres marciais abriram escolas (<strong>Kwans</strong>) para ensinar suas versões modernizadas das artes de luta. As cinco escolas originais (Chung Do Kwan, Moo Duk Kwan, Song Moo Kwan, Chang Moo Kwan, Ji Do Kwan) foram a base. Nesse cenário, surge a figura do <strong>General Choi Hong Hi</strong>, que, com sua influência militar e visão de unificação, liderou um esforço para criar uma única arte marcial nacional. Em <strong>11 de abril de 1955</strong>, em um comitê histórico, o nome <strong>"Taekwondo"</strong> foi oficialmente cunhado, unindo os diversos estilos sob uma única bandeira.' },
+                { title: '🌍 A Divisão e a Expansão Global (Anos 60 e 70)', content: 'O General Choi fundou a <strong>International Taekwon-Do Federation (ITF)</strong> em <strong>1966</strong> para difundir a arte globalmente. No entanto, devido a <strong>tensões políticas</strong> com o governo da Coreia do Sul, ele se exilou no Canadá em 1972, levando a sede da ITF consigo. Em resposta, o governo sul-coreano, para manter o controle da arte marcial como um esporte nacional, fundou a <strong>World Taekwondo Federation (WTF, hoje WT)</strong> em <strong>1973</strong> e, no mesmo ano, o <strong>Kukkiwon</strong>, o quartel-general mundial do Taekwondo. Essa divisão resultou no desenvolvimento de dois estilos principais: o <strong>ITF</strong>, mais focado na defesa pessoal e teoria do poder, e o <strong>WT</strong>, que se adaptou para se tornar um esporte de combate olímpico.' },
+                { title: '🏆 O Taekwondo no Cenário Mundial e Contemporâneo', content: 'A estratégia da Coreia do Sul e da WT foi bem-sucedida. O Taekwondo foi apresentado como esporte de demonstração nos Jogos Olímpicos de Seul em 1988 e tornou-se um <strong>esporte olímpico oficial em Sydney 2000</strong>. Essa inclusão acelerou sua popularidade global e levou a evoluções nas regras, como a introdução de <strong>protetores eletrônicos</strong> para tornar a pontuação mais objetiva. Recentemente, o <strong>Para-Taekwondo</strong> fez sua estreia nos Jogos Paralímpicos de Tóquio 2020, mostrando a inclusividade da arte. Hoje, o cenário mundial é dominado pela WT, mas a ITF e outras federações continuam a ter um papel importante na disseminação do Taekwondo em suas diferentes formas.' },
+                { title: '🇧🇷 Taekwondo no Brasil', content: 'O Taekwondo foi oficialmente introduzido no Brasil em <strong>julho de 1970</strong>, em São Paulo, com a chegada do <strong>Grão-Mestre Sang Min Cho</strong>, enviado pela ITF. Ele realizou a primeira demonstração da arte no país, dando início à sua disseminação. Logo depois, outros mestres como Sang In Kim e Kun Mo Bang chegaram para expandir o trabalho em outros estados. A primeira academia foi a <strong>Academia Liberdade</strong>. O esporte cresceu, e em <strong>1987</strong> foi fundada a <strong>Confederação Brasileira de Taekwondo (CBTKD)</strong>, filiada à WT, que hoje regula a prática olímpica no país.' },
+                { title: '⚖️ Análise Comparativa: ITF vs. WT', content: 'Embora compartilhem a mesma raiz, os estilos ITF e WT possuem diferenças marcantes. O <strong>ITF</strong>, criado pelo General Choi, foca na defesa pessoal, utilizando a "Teoria do Poder" e o movimento de "onda senoidal" (sine wave) para gerar força. Suas formas são os <strong>Hyongs (ou Tuls)</strong>. O <strong>WT</strong>, por outro lado, evoluiu como um esporte de combate. Seu foco está na competição de luta (Kyorugi), com ênfase em chutes potentes e velocidade. Suas formas são os <strong>Poomsae (Taegeuks e de Faixa Preta)</strong>, e suas regras de competição são as utilizadas nos Jogos Olímpicos.' },
+                { title: '🥋 Biografias de Grandes Mestres', content: 'A história do Taekwondo é moldada por seus mestres. <strong>General Choi Hong Hi</strong> é universalmente conhecido como o "Pai do Taekwondo" por seu papel na nomeação e unificação da arte. <strong>Lee Won Kuk</strong>, fundador do Chung Do Kwan, foi um dos primeiros a abrir uma escola moderna na Coreia pós-ocupação. <strong>Hwang Kee</strong>, fundador do Moo Duk Kwan, desenvolveu o estilo Tang Soo Do, que influenciou fortemente o Taekwondo. No Brasil, <strong>Grão-Mestre Sang Min Cho</strong> é reverenciado como o pioneiro que introduziu a arte no país.' },
+                { title: '🔬 A Ciência do Taekwondo (Biomecânica)', content: 'A eficácia do Taekwondo não é mágica, é ciência. A <strong>Biomecânica</strong> explica como um golpe gera tanto poder. Princípios como a <strong>Força de Reação</strong> (usar o chão para impulsionar o golpe), <strong>Concentração</strong> (aplicar a força em uma área mínima), <strong>Equilíbrio</strong> (manter um centro de gravidade estável), <strong>Controle da Respiração</strong> (o Kihap como expiração explosiva para contrair o abdômen) e a relação entre <strong>Massa e Velocidade</strong> (acelerar o movimento do corpo) são fundamentais para transformar um movimento em uma técnica poderosa e eficiente.' },
+                { title: '🇰🇷 Taekwondo e Cultura Coreana (Soft Power)', content: 'O Taekwondo é um dos maiores exemplos de <strong>"Soft Power"</strong> da Coreia do Sul. Mais do que uma luta, ele é um embaixador da cultura coreana no mundo. Através de seus princípios de cortesia, integridade e respeito, ele dissemina a filosofia do país. A presença do Taekwondo em <strong>filmes, K-dramas e até em coreografias de K-pop</strong> ajuda a construir uma imagem positiva da Coreia, atraindo interesse para sua língua, história e valores, funcionando como uma poderosa ferramenta de diplomacia cultural.' }
+            ],
+            numbers: [
+                { num: 0, kor: 'Yeong/Gong', pro: 'IÓNG/GONG', sino_kor: 'Yeong/Gong', sino_pro: 'IÓNG/GONG' },
+                { num: 1, kor: 'Hana', pro: 'RA-ná', sino_kor: 'Il', sino_pro: 'IL' },
+                { num: 2, kor: 'Dul', pro: 'DUL', sino_kor: 'I', sino_pro: 'I' },
+                { num: 3, kor: 'Set', pro: 'SÉT', sino_kor: 'Sam', sino_pro: 'SAM' },
+                { num: 4, kor: 'Net', pro: 'NÉT', sino_kor: 'Sa', sino_pro: 'SA' },
+                { num: 5, kor: 'Daseot', pro: 'DA-sót', sino_kor: 'O', sino_pro: 'Ô' },
+                { num: 6, kor: 'Yeoseot', pro: 'IÓ-sót', sino_kor: 'Yuk', sino_pro: 'IÚK' },
+                { num: 7, kor: 'Ilgop', pro: 'IL-gôp', sino_kor: 'Chil', sino_pro: 'TCHIL' },
+                { num: 8, kor: 'Yeodeol', pro: 'IÓ-dól', sino_kor: 'Pal', sino_pro: 'PAL' },
+                { num: 9, kor: 'Ahop', pro: 'A-rrôp', sino_kor: 'Gu', sino_pro: 'GU' },
+                { num: 10, kor: 'Yeol', pro: 'IÓL', sino_kor: 'Sip', sino_pro: 'XIP' },
+                { num: 20, kor: 'Seumul', pro: 'SU-mul', sino_kor: 'I-Sip', sino_pro: 'I-XIP' },
+                { num: 30, kor: 'Seoreun', pro: 'SÓ-run', sino_kor: 'Sam-Sip', sino_pro: 'SAM-XIP' },
+                { num: 40, kor: 'Maheun', pro: 'MA-run', sino_kor: 'Sa-Sip', sino_pro: 'SA-XIP' },
+                { num: 50, kor: 'Swin', pro: 'XUÍN', sino_kor: 'O-Sip', sino_pro: 'Ô-XIP' },
+                { num: 60, kor: 'Yesun', pro: 'IÊ-sun', sino_kor: 'Yuk-Sip', sino_pro: 'IÚK-XIP' },
+                { num: 70, kor: 'Ilheun', pro: 'IL-run', sino_kor: 'Chil-Sip', sino_pro: 'TCHIL-XIP' },
+                { num: 80, kor: 'Yeodeun', pro: 'IÓ-dun', sino_kor: 'Pal-Sip', sino_pro: 'PAL-XIP' },
+                { num: 90, kor: 'Aheun', pro: 'A-run', sino_kor: 'Gu-Sip', sino_pro: 'GU-XIP' },
+                { num: 100, kor: 'Baek', pro: 'BÉK', sino_kor: 'Baek', sino_pro: 'BÉK' }
+            ],
+            glossary: [
+                { category: 'Comandos de Aula', terms: [
+                    { korean: 'Charyot', pronunciation: 'TCHA-riót', translation: 'Sentido / Atenção' },
+                    { korean: 'Gyeongnye', pronunciation: 'GUIÓNG-niê', translation: 'Cumprimentar / Reverência' },
+                    { korean: 'Jumbi', pronunciation: 'DJUM-bí', translation: 'Preparar' },
+                    { korean: 'Shijak', pronunciation: 'XI-djak', translation: 'Começar' },
+                    { korean: 'Geuman', pronunciation: 'GU-man', translation: 'Parar' },
+                    { korean: 'Baro', pronunciation: 'BA-rô', translation: 'Voltar (à posição inicial)' },
+                    { korean: 'Swieo', pronunciation: 'XUÍ-ô', translation: 'Descansar' },
+                    { korean: 'Kihap', pronunciation: 'QUI-rráp', translation: 'Grito (exteriorização da energia)' }
+                ]},
+                { category: 'Termos Gerais', terms: [
+                    { korean: 'Dojang', pronunciation: 'DO-djang', translation: 'Local de treino' },
+                    { korean: 'Dobok', pronunciation: 'DO-bok', translation: 'Uniforme de treino' },
+                    { korean: 'Ti', pronunciation: 'TÍ', translation: 'Faixa' },
+                    { korean: 'Sabonim', pronunciation: 'SA-bom-ním', translation: 'Mestre (4º DAN ou superior)' },
+                    { korean: 'Kyosanim', pronunciation: 'QUIÔ-sa-ním', translation: 'Instrutor (1º ao 3º DAN)' },
+                    { korean: 'Poomsae', pronunciation: 'PUM-sê', translation: 'Forma / Sequência de movimentos' },
+                    { korean: 'Kyorugi', pronunciation: 'QUIÔ-ru-guí', translation: 'Luta' }
+                ]}
+            ],
+            principles: {
+                introduction: [
+                    { title: 'O Significado da Palavra Taekwondo', content: 'A palavra "Taekwondo" é dividida em três partes: <br> • <b>Tae (태)</b>: Significa "pé" ou "chutar".<br> • <b>Kwon (권)</b>: Significa "punho" ou "lutar".<br> • <b>Do (도)</b>: Significa "caminho", "arte" ou "filosofia".<br>Juntas, formam "O Caminho dos Pés e das Mãos".' },
+                    { title: 'Espírito do Taekwondo', content: 'O espírito do Taekwondo é a essência que guia o praticante. É composto pelos cinco princípios fundamentais e representa a busca pelo equilíbrio entre a força física e a clareza mental, sempre agindo com justiça e respeito.' }
+                ],
+                oath: {
+                    title: 'Juramento do Taekwondo',
+                    items: [
+                        'Observar as regras do Taekwondo.',
+                        'Respeitar meus instrutores e superiores.',
+                        'Nunca fazer mau uso do Taekwondo.',
+                        'Construir um mundo mais pacífico.',
+                        'Ser um campeão da liberdade e da justiça.'
+                    ]
+                },
+                rituals: {
+                    title: 'Rituais e Cumprimentos Essenciais',
+                    items: [
+                        { title: 'Cumprimento à Bandeira (Kukki-e Daehayo Gyeongnye)', content: 'Ao entrar e sair do Dojang, o praticante vira-se para a bandeira da Coreia, posiciona a mão direita sobre o coração e se curva em sinal de respeito à nação que originou a arte.' },
+                        { title: 'Cumprimento ao Mestre (Sabonim-ke Gyeongnye)', content: 'Demonstração de respeito e gratidão ao mestre ou instrutor. É realizado no início e no final da aula, e sempre que se dirige ao mestre.' },
+                        { title: 'Início e Fim da Aula (Charyot, Gyeongnye)', content: 'A aula começa e termina com os comandos "Charyot" (sentido) e "Gyeongnye" (cumprimentar), formalizando o início e o fim do período de treinamento e demonstrando respeito mútuo entre todos os presentes.' }
+                    ]
+                },
+                flag: {
+                    title: 'A Bandeira da Coreia do Sul (Taegeukgi)',
+                    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/2560px-Flag_of_South_Korea.svg.png',
+                    altText: 'Bandeira da Coreia do Sul',
+                    content: 'A bandeira simboliza o equilíbrio do universo. O fundo branco representa a paz e a pureza. O círculo no centro, chamado <b>Taegeuk</b>, representa a origem de tudo, com o azul (<b>Eum</b>/Yin) significando o negativo/a noite, e o vermelho (<b>Yang</b>) o positivo/o dia. Os quatro trigramas (<b>Gwe</b>) ao redor representam os elementos e virtudes:',
+                    symbols: [
+                        { symbol: '☰ (Geon)', meaning: 'Céu, Primavera, Leste, Humanidade.' },
+                        { symbol: '☲ (Ri)', meaning: 'Sol, Fogo, Outono, Sul, Justiça.' },
+                        { symbol: '☵ (Gam)', meaning: 'Lua, Água, Inverno, Norte, Inteligência.' },
+                        { symbol: '☷ (Gon)', meaning: 'Terra, Verão, Oeste, Cortesia.' }
+                    ]
+                },
+                corePrinciples: [
+                    { title: '예의 (Ye Ui) - Cortesia', content: 'Ser amável e respeitoso com todos. Tratar os outros como você gostaria de ser tratado. A cortesia é a base para a harmonia e o respeito mútuo dentro e fora do dojang.' },
+                    { title: '염치 (Yom Chi) - Integridade', content: 'Ser honesto consigo mesmo e com os outros. Ter a capacidade de definir o certo e o errado e ter a consciência de se sentir culpado quando errar. Um praticante íntegro é confiável e justo.' },
+                    { title: '인내 (In Nae) - Perseverança', content: 'Superar todas as dificuldades, treinando constantemente para atingir o objetivo. Seja um Poomsae difícil ou um desafio na vida, o praticante deve persistir até alcançar o sucesso.' },
+                    { title: '극기 (Geuk Gi) - Autocontrole', content: 'Controlar o corpo, a mente e as emoções. Perder a calma em uma luta ou em qualquer situação é perigoso. O autocontrole é vital tanto para o combate quanto para as questões pessoais.' },
+                    { title: '백절불굴 (Baekjeol Bulgul) - Espírito Indomável', content: 'Manter-se forte e resiliente diante da injustiça e da adversidade. É o espírito de nunca desistir, de lutar pelos seus princípios, mesmo quando confrontado com um inimigo avassalador.' }
+                ],
+                beltMeanings: {
+                    title: 'O Significado das Faixas',
+                    belts: [
+                        { color: 'Branca', symbol: '☰', meaning: 'Representa a inocência, o início. O aluno é como uma semente, pronta para o aprendizado.' },
+                        { color: 'Laranja', symbol: '☱', meaning: 'A primeira cor adicionada ao branco, simboliza os primeiros raios de sol na semente, o início do desenvolvimento.' },
+                        { color: 'Amarela', symbol: '☲', meaning: 'Representa a terra, a raiz. O aluno começa a firmar seus fundamentos na arte.' },
+                        { color: 'Verde', symbol: '☳', meaning: 'Simboliza o crescimento, a planta que brota da terra. As técnicas começam a florescer.' },
+                        { color: 'Azul', symbol: '☴', meaning: 'Representa o céu. A planta cresce em direção ao céu, o aluno busca um conhecimento mais profundo.' },
+                        { color: 'Vermelha', symbol: '☵', meaning: 'Simboliza o perigo. As habilidades do aluno são afiadas e ele deve aprender a ter cautela e controle.' },
+                        { color: 'Preta', symbol: '☷', meaning: 'O oposto do branco, representa a maturidade, a maestria e o conhecimento. É o fim de um ciclo e o início de um novo.' }
+                    ]
+                }
+            }
+        };
+
+        // --- INICIALIZAÇÃO ---
+        document.addEventListener('DOMContentLoaded', () => {
+            setupNavigation();
+            renderFact();
+            renderCurriculum(db.curriculum);
+            renderTools();
+            renderPrinciples();
+            renderGlossary();
+            renderHistory();
+            renderNumbers();
+            
+            document.getElementById('searchInput').addEventListener('input', filterAndRender);
+            document.body.addEventListener('click', handleShareClick);
+        });
+
+        // --- NAVEGAÇÃO ---
+        function setupNavigation() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const sections = document.querySelectorAll('.content-section');
+            
+            tabs[0].classList.add('active');
+            sections[0].classList.add('active');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+                    tab.classList.add('active');
+                    document.getElementById(tab.dataset.tab).classList.add('active');
+                });
+            });
+        }
+
+        // --- FUNÇÕES DE RENDERIZAÇÃO ---
+        function renderFact() {
+            const factCard = document.getElementById('factCard');
+            const randomFact = db.facts[Math.floor(Math.random() * db.facts.length)];
+            factCard.innerHTML = `<p class="text-sm italic text-gray-600"><b class="font-semibold text-blue-600">Você Sabia?</b> ${randomFact}</p>`;
+        }
+
+        function renderCurriculum(filteredCurriculum) {
+            const beltList = document.getElementById('beltList');
+            const noResults = document.getElementById('noResults');
+            beltList.innerHTML = '';
+            let hasResults = false;
+
+            filteredCurriculum.forEach(beltData => {
+                if (beltData.techniques.length === 0) return;
+                hasResults = true;
+
+                const accordionItem = document.createElement('div');
+                accordionItem.className = 'accordion-item bg-white rounded-lg shadow-md overflow-hidden';
+                
+                const header = document.createElement('div');
+                header.className = `accordion-header flex justify-between items-center p-4 cursor-pointer ${beltData.color} ${beltData.textColor} border-l-8 ${beltData.borderColor}`;
+                header.innerHTML = `<h2 class="text-xl font-bold">${beltData.belt}</h2><svg class="chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>`;
+
+                const content = document.createElement('div');
+                content.className = 'accordion-content';
+                const techGrid = document.createElement('div');
+                techGrid.className = 'grid grid-cols-1 md:grid-cols-2 gap-4';
+
+                beltData.techniques.forEach(tech => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-gray-50 p-4 rounded-lg border border-gray-200 flex flex-col relative';
+                    card.innerHTML = `
+                        <div class="flex-grow">
+                            <h3 class="text-lg font-bold text-gray-900">${tech.korean}</h3>
+                            <p class="text-blue-600 font-semibold mb-2 italic">(${tech.pronunciation})</p>
+                            <p class="text-gray-700 font-medium">${tech.translation}</p>
+                        </div>
+                        <button class="share-btn absolute top-2 right-2 text-green-500 hover:text-green-600" 
+                                data-share-type="technique" 
+                                data-korean="${tech.korean}" 
+                                data-translation="${tech.translation}"
+                                title="Compartilhar no WhatsApp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        </button>
+                    `;
+                    techGrid.appendChild(card);
+                });
+
+                content.appendChild(techGrid);
+                accordionItem.appendChild(header);
+                accordionItem.appendChild(content);
+                beltList.appendChild(accordionItem);
+
+                header.addEventListener('click', () => {
+                    const isOpen = header.classList.contains('open');
+                    document.querySelectorAll('.accordion-header.open').forEach(h => {
+                        if (h !== header) {
+                            h.classList.remove('open');
+                            h.nextElementSibling.style.maxHeight = null;
+                            h.nextElementSibling.classList.remove('open');
+                        }
+                    });
+                    header.classList.toggle('open', !isOpen);
+                    content.classList.toggle('open', !isOpen);
+                    content.style.maxHeight = !isOpen ? content.scrollHeight + 48 + "px" : null;
+                });
+            });
+            noResults.classList.toggle('hidden', hasResults);
+        }
+
+        function renderTools() {
+            const container = document.getElementById('tools');
+            if (!container) return;
+            container.innerHTML = `<h2 class="text-2xl font-bold text-gray-900 mb-6">Área de Meditação e Respiração</h2>`;
+            const meditationList = document.createElement('div');
+            meditationList.className = 'space-y-6';
+            db.tools.meditation.forEach(item => {
+                meditationList.innerHTML += `
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <h3 class="text-xl font-semibold text-blue-600 mb-2">${item.title}</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600">
+                            ${item.steps.map(step => `<li>${step}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            });
+            container.appendChild(meditationList);
+        }
+        
+        function renderPrinciples() {
+            const container = document.getElementById('principles');
+            container.innerHTML = '';
+            const p = db.principles;
+            p.introduction.forEach(item => { container.innerHTML += `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${item.title}</h2><p class="text-gray-700 leading-relaxed">${item.content}</p></div>`; });
+            let oathHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${p.oath.title}</h2><ul class="list-disc list-inside space-y-2 text-gray-700">`;
+            p.oath.items.forEach(item => { oathHtml += `<li>${item}</li>`; });
+            oathHtml += `</ul></div>`;
+            container.innerHTML += oathHtml;
+            let ritualsHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${p.rituals.title}</h2><div class="space-y-4">`;
+            p.rituals.items.forEach(item => { ritualsHtml += `<div class="bg-gray-50 p-4 rounded-lg border border-gray-200"><h3 class="font-semibold text-blue-600">${item.title}</h3><p class="text-sm text-gray-600">${item.content}</p></div>`; });
+            ritualsHtml += `</div></div>`;
+            container.innerHTML += ritualsHtml;
+            let flagHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${p.flag.title}</h2><div class="flex flex-col md:flex-row gap-6 items-center"><img src="${p.flag.imageUrl}" alt="${p.flag.altText}" class="w-full md:w-1/3 rounded-lg shadow-md border"><div class="flex-1"><p class="text-gray-700 leading-relaxed mb-4">${p.flag.content}</p><div class="grid grid-cols-2 gap-2">`;
+            p.flag.symbols.forEach(s => { flagHtml += `<div class="bg-gray-50 p-2 rounded-md"><b class="text-lg">${s.symbol}</b>: ${s.meaning}</div>`; });
+            flagHtml += `</div></div></div></div>`;
+            container.innerHTML += flagHtml;
+            let coreHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">Os 5 Princípios Fundamentais</h2><div class="space-y-4">`;
+            p.corePrinciples.forEach(item => { coreHtml += `<div class="bg-gray-50 p-4 rounded-lg border border-gray-200"><h3 class="text-xl font-semibold text-blue-600 mb-2">${item.title}</h3><p class="text-gray-700 leading-relaxed">${item.content}</p></div>`; });
+            coreHtml += `</div></div>`;
+            container.innerHTML += coreHtml;
+            let beltsHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${p.beltMeanings.title}</h2><div class="space-y-4">`;
+            p.beltMeanings.belts.forEach(item => { beltsHtml += `<div class="bg-gray-50 p-4 rounded-lg border border-gray-200"><h3 class="text-xl font-semibold mb-2 flex items-center">${item.color} <span class="ml-3 text-2xl">${item.symbol}</span></h3><p class="text-gray-700 leading-relaxed">${item.meaning}</p></div>`; });
+            beltsHtml += `</div></div>`;
+            container.innerHTML += beltsHtml;
+        }
+
+        function renderGlossary() {
+            const container = document.getElementById('glossary');
+            container.innerHTML = '';
+            db.glossary.forEach(category => {
+                let categoryHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-4">${category.category}</h2><div class="space-y-4">`;
+                category.terms.forEach(term => {
+                    categoryHtml += `<div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <h3 class="text-lg font-bold text-gray-900">${term.korean}</h3>
+                        <p class="text-blue-600 font-semibold mb-2 italic">(${term.pronunciation})</p>
+                        <p class="text-gray-700 font-medium">${term.translation}</p>
+                    </div>`;
+                });
+                categoryHtml += `</div></div>`;
+                container.innerHTML += categoryHtml;
+            });
+        }
+
+        function renderHistory() {
+            const container = document.getElementById('history');
+            container.innerHTML = `<h2 class="text-2xl font-bold text-gray-900 mb-6">A Jornada do Taekwondo</h2>`;
+            const historyList = document.createElement('div');
+            historyList.className = 'space-y-6';
+            db.history.forEach(item => {
+                historyList.innerHTML += `
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="flex justify-between items-start gap-4 mb-2">
+                            <h3 class="text-xl font-semibold text-blue-600 flex-grow">${item.title}</h3>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">${item.content.replace(/<strong>/g, '<strong class="text-blue-600">')}</p>
+                    </div>
+                `;
+            });
+            container.appendChild(historyList);
+        }
+
+        function renderNumbers() {
+            const container = document.getElementById('numbers');
+            let content = `<h2 class="text-2xl font-bold text-gray-900 mb-6">Contagem em Coreano</h2>
+                           <p class="text-sm text-gray-600 mb-4">O sistema <b>Nativo-Coreano</b> é usado para contagens gerais, como o número de chutes ou alunos (ex: Hana, Dul, Set...). O sistema <b>Sino-Coreano</b> é usado para nomear as formas e graduações (ex: Poomsae Il Jang, 2º DAN) e para números maiores.<br><br><b>Para números intermediários</b>, combine a dezena com a unidade. Ex: 11 (Nativo) = Yeol Hana, 11 (Sino) = Sip-il.</p>
+                           <div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="border-b-2 border-gray-200">
+                           <th class="p-2">Número</th><th class="p-2">Nativo-Coreano</th><th class="p-2">Sino-Coreano</th></tr></thead><tbody>`;
+            db.numbers.forEach(n => {
+                content += `<tr class="border-b border-gray-100">
+                                <td class="p-2 font-bold">${n.num}</td>
+                                <td class="p-2">${n.kor}<br><i class="text-sm text-blue-600">(${n.pro})</i></td>
+                                <td class="p-2">${n.sino_kor}<br><i class="text-sm text-blue-600">(${n.sino_pro})</i></td>
+                           </tr>`;
+            });
+            content += '</tbody></table></div>';
+            container.innerHTML = content;
+        }
+        
+        // --- FUNÇÕES DE INTERAÇÃO ---
+        function filterAndRender() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (!query) {
+                renderCurriculum(db.curriculum);
+                return;
+            }
+            const filtered = db.curriculum.map(beltData => {
+                const filteredTechniques = beltData.techniques.filter(tech =>
+                    tech.korean.toLowerCase().includes(query) ||
+                    tech.translation.toLowerCase().includes(query) ||
+                    tech.pronunciation.toLowerCase().includes(query)
+                );
+                return { ...beltData, techniques: filteredTechniques };
+            }).filter(beltData => beltData.techniques.length > 0);
+            
+            renderCurriculum(filtered);
+
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                const content = header.nextElementSibling;
+                header.classList.add('open');
+                content.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + 48 + "px";
+            });
+        }
+
+        function handleShareClick(event) {
+            const shareButton = event.target.closest('.share-btn');
+            if (!shareButton) return;
+
+            const type = shareButton.dataset.shareType;
+            let textToShare = '';
+            const appCredit = '\n\n_Compartilhado pelo Guia Completo de Taekwondo._';
+
+            if (type === 'technique') {
+                const korean = shareButton.dataset.korean;
+                const translation = shareButton.dataset.translation;
+                textToShare = `*Técnica de Taekwondo:*\n\n*${korean}* (${translation})${appCredit}`;
+            } else if (type === 'history') {
+                const title = shareButton.dataset.title;
+                // Remove HTML tags for plain text sharing
+                const content = shareButton.dataset.content.replace(/<[^>]*>?/gm, '');
+                textToShare = `*História do Taekwondo:*\n\n*${title}*\n${content}${appCredit}`;
+            }
+
+            if (textToShare) {
+                const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(textToShare)}`;
+                window.open(whatsappUrl, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>
