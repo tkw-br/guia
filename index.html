@@ -17,8 +17,8 @@
             transition: all 0.3s ease;
         }
         .tab-btn.active {
-            color: #2563eb; /* blue-600 */
-            border-bottom-color: #2563eb;
+            color: #CD2E3A; /* Flag Red */
+            border-bottom-color: #CD2E3A;
         }
         .content-section {
             display: none;
@@ -53,31 +53,31 @@
     <div class="container mx-auto p-4 sm:p-6 max-w-4xl">
         
         <header class="text-center mb-6">
-            <h1 class="text-3xl sm:text-4xl font-bold text-blue-600">Guia Completo de Taekwondo 🥋</h1>
+            <h1 class="text-3xl sm:text-4xl font-bold" style="color: #CD2E3A;">Guia Completo de Taekwondo 🥋</h1>
             <p class="mt-2 text-gray-600">O manual definitivo para o praticante.</p>
         </header>
 
         <!-- Menu de Navegação -->
         <nav class="bg-white rounded-lg shadow-md mb-8 sticky top-2 z-10">
-            <div class="flex justify-center sm:justify-around border-b border-gray-200 flex-wrap">
-                <button data-tab="curriculum" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Currículo</button>
-                <button data-tab="tools" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Ferramentas</button>
-                <button data-tab="principles" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Princípios</button>
-                <button data-tab="glossary" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Glossário</button>
-                <button data-tab="history" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">História</button>
-                <button data-tab="numbers" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Números</button>
+            <div class="grid grid-cols-3 sm:flex sm:justify-around border-b border-gray-200">
+                <button data-tab="curriculum" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">Currículo</button>
+                <button data-tab="tools" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">Ferramentas</button>
+                <button data-tab="principles" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">Princípios</button>
+                <button data-tab="glossary" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">Glossário</button>
+                <button data-tab="history" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">História</button>
+                <button data-tab="numbers" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">Números</button>
             </div>
         </nav>
 
         <!-- Seção do Currículo -->
         <section id="curriculum" class="content-section">
             <!-- Card "Você Sabia?" -->
-            <div id="factCard" class="bg-white p-4 rounded-lg shadow-md mb-6 border-l-4 border-blue-500">
+            <div id="factCard" class="bg-white p-4 rounded-lg shadow-md mb-6 border-l-4" style="border-color: #CD2E3A;">
                 <!-- Fato aleatório será injetado aqui -->
             </div>
             <div class="mb-8">
                 <input type="text" id="searchInput"
-                       class="w-full p-4 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+                       class="w-full p-4 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300"
                        placeholder="Pesquisar por técnica no currículo...">
             </div>
             <div id="beltList" class="space-y-4"></div>
