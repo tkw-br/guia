@@ -17,8 +17,8 @@
             transition: all 0.3s ease;
         }
         .tab-btn.active {
-            color: #CD2E3A; /* Flag Red */
-            border-bottom-color: #CD2E3A;
+            color: #2563eb; /* blue-600 */
+            border-bottom-color: #2563eb;
         }
         .content-section {
             display: none;
@@ -53,31 +53,28 @@
     <div class="container mx-auto p-4 sm:p-6 max-w-4xl">
         
         <header class="text-center mb-6">
-            <h1 class="text-3xl sm:text-4xl font-bold" style="color: #CD2E3A;">Guia Completo de Taekwondo 🥋</h1>
+            <h1 class="text-3xl sm:text-4xl font-bold text-blue-600">Guia Completo de Taekwondo 🥋</h1>
             <p class="mt-2 text-gray-600">O manual definitivo para o praticante.</p>
         </header>
 
         <!-- Menu de Navegação -->
         <nav class="bg-white rounded-lg shadow-md mb-8 sticky top-2 z-10">
-            <div class="grid grid-cols-3 sm:flex sm:justify-around border-b border-gray-200">
-                <button data-tab="curriculum" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">Currículo</button>
-                <button data-tab="tools" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">Ferramentas</button>
-                <button data-tab="principles" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">Princípios</button>
-                <button data-tab="glossary" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">Glossário</button>
-                <button data-tab="history" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">História</button>
-                <button data-tab="numbers" class="tab-btn p-3 text-center sm:p-4 text-xs sm:text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-red-500 sm:flex-1">Números</button>
+            <div class="flex justify-center sm:justify-around border-b border-gray-200 flex-wrap">
+                <button data-tab="curriculum" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Currículo</button>
+                <button data-tab="tools" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Ferramentas</button>
+                <button data-tab="principles" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Princípios</button>
+                <button data-tab="glossary" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Glossário</button>
+                <button data-tab="history" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">História</button>
+                <button data-tab="numbers" class="tab-btn flex-grow sm:flex-1 p-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-500">Números</button>
             </div>
         </nav>
 
         <!-- Seção do Currículo -->
         <section id="curriculum" class="content-section">
-            <!-- Card "Você Sabia?" -->
-            <div id="factCard" class="bg-white p-4 rounded-lg shadow-md mb-6 border-l-4" style="border-color: #CD2E3A;">
-                <!-- Fato aleatório será injetado aqui -->
-            </div>
+            <div id="factCard" class="bg-white p-4 rounded-lg shadow-md mb-6 border-l-4 border-blue-500"></div>
             <div class="mb-8">
                 <input type="text" id="searchInput"
-                       class="w-full p-4 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300"
+                       class="w-full p-4 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
                        placeholder="Pesquisar por técnica no currículo...">
             </div>
             <div id="beltList" class="space-y-4"></div>
@@ -115,7 +112,22 @@
             ],
             curriculum: [
                 // GUBs
-                { belt: 'Branca (10º GUB) ☰', color: 'bg-white', textColor: 'text-black', borderColor: 'border-gray-300', techniques: [ { korean: 'Ap Seogi', pronunciation: 'AP SO-guí', translation: 'Base de Andar' }, { korean: 'Juchum Seogi', pronunciation: 'DJU-tchum SO-guí', translation: 'Base do Cavaleiro' }, { korean: 'Ap Kubi', pronunciation: 'AP KU-bí', translation: 'Base Frontal Longa' }, { korean: 'Arae Makki', pronunciation: 'A-ré MA-quí', translation: 'Defesa Baixa' }, { korean: 'Momtong An Makki', pronunciation: 'MOM-tong AN MA-quí', translation: 'Defesa de Tronco (dentro)' }, { korean: 'Olgul Makki', pronunciation: 'OL-gul MA-quí', translation: 'Defesa Alta' }, { korean: 'Momtong Jireugi', pronunciation: 'MOM-tong DJI-ru-guí', translation: 'Soco no Tronco' }, { korean: 'Ap Chagi', pronunciation: 'AP TCHA-guí', translation: 'Chute Frontal' } ] },
+                {
+                    belt: 'Branca (10º GUB) ☰', 
+                    color: 'bg-white', 
+                    textColor: 'text-black', 
+                    borderColor: 'border-gray-300',
+                    techniques: [
+                        { korean: 'Ap Seogi', pronunciation: 'AP SO-guí', translation: 'Base de Andar' },
+                        { korean: 'Juchum Seogi', pronunciation: 'DJU-tchum SO-guí', translation: 'Base do Cavaleiro' },
+                        { korean: 'Ap Kubi', pronunciation: 'AP KU-bí', translation: 'Base Frontal Longa' },
+                        { korean: 'Arae Makki', pronunciation: 'A-ré MA-quí', translation: 'Defesa Baixa' },
+                        { korean: 'Momtong An Makki', pronunciation: 'MOM-tong AN MA-quí', translation: 'Defesa de Tronco (dentro)' },
+                        { korean: 'Olgul Makki', pronunciation: 'OL-gul MA-quí', translation: 'Defesa Alta' },
+                        { korean: 'Momtong Jireugi', pronunciation: 'MOM-tong DJI-ru-guí', translation: 'Soco no Tronco' },
+                        { korean: 'Ap Chagi', pronunciation: 'AP TCHA-guí', translation: 'Chute Frontal' }
+                    ]
+                },
                 { belt: 'Laranja (9º GUB) ☱', color: 'bg-orange-400', textColor: 'text-white', borderColor: 'border-orange-600', techniques: [ { korean: 'Arae Hechyo Makki', pronunciation: 'A-ré RÉ-tchiô MA-quí', translation: 'Defesa Baixa Dupla para Fora' }, { korean: 'Olgul Jireugi', pronunciation: 'OL-gul DJI-ru-guí', translation: 'Soco no Rosto' }, { korean: 'An Chagi', pronunciation: 'AN TCHA-guí', translation: 'Chute para Dentro' }, { korean: 'Bakat Chagi', pronunciation: 'BA-kat TCHA-guí', translation: 'Chute para Fora' } ] },
                 { belt: 'Amarela (8º GUB) ☲', color: 'bg-yellow-300', textColor: 'text-black', borderColor: 'border-yellow-500', techniques: [ { korean: 'Dwit Kubi', pronunciation: 'DUÍT KU-bí', translation: 'Base Traseira (em "L")' }, { korean: 'Momtong Bakat Makki', pronunciation: 'MOM-tong BA-kat MA-quí', translation: 'Defesa de Tronco (fora)' }, { korean: 'Sonnal Momtong Makki', pronunciation: 'SON-nál MOM-tong MA-quí', translation: 'Defesa de Tronco com Faca da Mão' }, { korean: 'Dollyo Chagi', pronunciation: 'DOL-liô TCHA-guí', translation: 'Chute Semicircular' }, { korean: 'Naeryo Chagi', pronunciation: 'NÉ-rio TCHA-guí', translation: 'Chute Descendente' } ] },
                 { belt: 'Amarela P. Verde (7º GUB) ☳', color: 'bg-yellow-300', textColor: 'text-black', borderColor: 'border-green-500', techniques: [ { korean: 'Bakat Palmok Momtong Makki', pronunciation: 'BA-kat PAL-mok MOM-tong MA-quí', translation: 'Defesa de Tronco com Antebraço Externo' }, { korean: 'Dubeon Momtong Jireugi', pronunciation: 'DU-bon MOM-tong DJI-ru-guí', translation: 'Soco Duplo no Tronco' }, { korean: 'Mireo Chagi', pronunciation: 'MI-ró TCHA-guí', translation: 'Chute Empurrando' } ] },
@@ -147,12 +159,13 @@
                 { title: '🇯🇵 O Período Sombrio: A Ocupação Japonesa (1910-1945)', content: 'Este foi um período de grande repressão. O governo colonial japonês <strong>proibiu a prática de todas as artes e manifestações culturais coreanas</strong>, incluindo o Taekkyeon. O objetivo era apagar a identidade nacional. Paradoxalmente, a proibição forçou a prática clandestina e a adaptação. Muitos coreanos que foram para o Japão aprenderam artes como o <strong>Karatê</strong> e o <strong>Judô</strong>. Ao retornarem, eles secretamente mesclaram essas novas técnicas com os movimentos fluidos e os chutes do Taekkyeon, criando uma base técnica híbrida e resiliente que se tornaria fundamental para o futuro da arte.' },
                 { title: '🇰🇷 O Renascimento e a Unificação (Pós-1945)', content: 'Com a <strong>Libertação da Coreia</strong> em 1945, um fervor nacionalista tomou conta do país. Mestres marciais abriram escolas (<strong>Kwans</strong>) para ensinar suas versões modernizadas das artes de luta. As cinco escolas originais (Chung Do Kwan, Moo Duk Kwan, Song Moo Kwan, Chang Moo Kwan, Ji Do Kwan) foram a base. Nesse cenário, surge a figura do <strong>General Choi Hong Hi</strong>, que, com sua influência militar e visão de unificação, liderou um esforço para criar uma única arte marcial nacional. Em <strong>11 de abril de 1955</strong>, em um comitê histórico, o nome <strong>"Taekwondo"</strong> foi oficialmente cunhado, unindo os diversos estilos sob uma única bandeira.' },
                 { title: '🌍 A Divisão e a Expansão Global (Anos 60 e 70)', content: 'O General Choi fundou a <strong>International Taekwon-Do Federation (ITF)</strong> em <strong>1966</strong> para difundir a arte globalmente. No entanto, devido a <strong>tensões políticas</strong> com o governo da Coreia do Sul, ele se exilou no Canadá em 1972, levando a sede da ITF consigo. Em resposta, o governo sul-coreano, para manter o controle da arte marcial como um esporte nacional, fundou a <strong>World Taekwondo Federation (WTF, hoje WT)</strong> em <strong>1973</strong> e, no mesmo ano, o <strong>Kukkiwon</strong>, o quartel-general mundial do Taekwondo. Essa divisão resultou no desenvolvimento de dois estilos principais: o <strong>ITF</strong>, mais focado na defesa pessoal e teoria do poder, e o <strong>WT</strong>, que se adaptou para se tornar um esporte de combate olímpico.' },
-                { title: '🏆 O Taekwondo no Cenário Mundial e Contemporâneo', content: 'A estratégia da Coreia do Sul e da WT foi bem-sucedida. O Taekwondo foi apresentado como esporte de demonstração nos Jogos Olímpicos de Seul em 1988 e tornou-se um <strong>esporte olímpico oficial em Sydney 2000</strong>. Essa inclusão acelerou sua popularidade global e levou a evoluções nas regras, como a introdução de <strong>protetores eletrônicos</strong> para tornar a pontuação mais objetiva. Recentemente, o <strong>Para-Taekwondo</strong> fez sua estreia nos Jogos Paralímpicos de Tóquio 2020, mostrando a inclusividade da arte. Hoje, o cenário mundial é dominado pela WT, mas a ITF e outras federações continuam a ter um papel importante na disseminação do Taekwondo em suas diferentes formas.' },
+                { title: '🏆 O Taekwondo no Cenário Mundial e Contemporâneo', content: 'A estratégia da Coreia do Sul e da WT foi bem-sucedida. O Taekwondo foi apresentado como esporte de demonstração nos Jogos Olímpicos de Seul em 1988 e tornou-se um <strong>esporte olímpico oficial em Sydney 2000</strong>. Essa inclusão acelerou sua popularidade global e levou a evoluções nas regras, como a introdução de <strong>protetores eletrônicos</strong> para tornar a pontuação mais objetiva. Recentemente, o <strong>Para-Taekwondo</strong> fez sua estreia nos Jogos Paralímpicos de Tóquio 2020, mostrando a inclusividade da arte. Hoje, o cenário mundial é dominado pela WT, but a ITF e outras federações continuam a ter um papel importante na disseminação do Taekwondo em suas diferentes formas.' },
                 { title: '🇧🇷 Taekwondo no Brasil', content: 'O Taekwondo foi oficialmente introduzido no Brasil em <strong>julho de 1970</strong>, em São Paulo, com a chegada do <strong>Grão-Mestre Sang Min Cho</strong>, enviado pela ITF. Ele realizou a primeira demonstração da arte no país, dando início à sua disseminação. Logo depois, outros mestres como Sang In Kim e Kun Mo Bang chegaram para expandir o trabalho em outros estados. A primeira academia foi a <strong>Academia Liberdade</strong>. O esporte cresceu, e em <strong>1987</strong> foi fundada a <strong>Confederação Brasileira de Taekwondo (CBTKD)</strong>, filiada à WT, que hoje regula a prática olímpica no país.' },
                 { title: '⚖️ Análise Comparativa: ITF vs. WT', content: 'Embora compartilhem a mesma raiz, os estilos ITF e WT possuem diferenças marcantes. O <strong>ITF</strong>, criado pelo General Choi, foca na defesa pessoal, utilizando a "Teoria do Poder" e o movimento de "onda senoidal" (sine wave) para gerar força. Suas formas são os <strong>Hyongs (ou Tuls)</strong>. O <strong>WT</strong>, por outro lado, evoluiu como um esporte de combate. Seu foco está na competição de luta (Kyorugi), com ênfase em chutes potentes e velocidade. Suas formas são os <strong>Poomsae (Taegeuks e de Faixa Preta)</strong>, e suas regras de competição são as utilizadas nos Jogos Olímpicos.' },
                 { title: '🥋 Biografias de Grandes Mestres', content: 'A história do Taekwondo é moldada por seus mestres. <strong>General Choi Hong Hi</strong> é universalmente conhecido como o "Pai do Taekwondo" por seu papel na nomeação e unificação da arte. <strong>Lee Won Kuk</strong>, fundador do Chung Do Kwan, foi um dos primeiros a abrir uma escola moderna na Coreia pós-ocupação. <strong>Hwang Kee</strong>, fundador do Moo Duk Kwan, desenvolveu o estilo Tang Soo Do, que influenciou fortemente o Taekwondo. No Brasil, <strong>Grão-Mestre Sang Min Cho</strong> é reverenciado como o pioneiro que introduziu a arte no país.' },
                 { title: '🔬 A Ciência do Taekwondo (Biomecânica)', content: 'A eficácia do Taekwondo não é mágica, é ciência. A <strong>Biomecânica</strong> explica como um golpe gera tanto poder. Princípios como a <strong>Força de Reação</strong> (usar o chão para impulsionar o golpe), <strong>Concentração</strong> (aplicar a força em uma área mínima), <strong>Equilíbrio</strong> (manter um centro de gravidade estável), <strong>Controle da Respiração</strong> (o Kihap como expiração explosiva para contrair o abdômen) e a relação entre <strong>Massa e Velocidade</strong> (acelerar o movimento do corpo) são fundamentais para transformar um movimento em uma técnica poderosa e eficiente.' },
-                { title: '🇰🇷 Taekwondo e Cultura Coreana (Soft Power)', content: 'O Taekwondo é um dos maiores exemplos de <strong>"Soft Power"</strong> da Coreia do Sul. Mais do que uma luta, ele é um embaixador da cultura coreana no mundo. Através de seus princípios de cortesia, integridade e respeito, ele dissemina a filosofia do país. A presença do Taekwondo em <strong>filmes, K-dramas e até em coreografias de K-pop</strong> ajuda a construir uma imagem positiva da Coreia, atraindo interesse para sua língua, história e valores, funcionando como uma poderosa ferramenta de diplomacia cultural.' }
+                { title: '🇰🇷 Taekwondo e Cultura Coreana (Soft Power)', content: 'O Taekwondo é um dos maiores exemplos de <strong>"Soft Power"</strong> da Coreia do Sul. Mais do que uma luta, ele é um embaixador da cultura coreana no mundo. Através de seus princípios de cortesia, integridade e respeito, ele dissemina a filosofia do país. A presença do Taekwondo em <strong>filmes, K-dramas e até em coreografias de K-pop</strong> ajuda a construir uma imagem positiva da Coreia, atraindo interesse para sua língua, história e valores, funcionando como uma poderosa ferramenta de diplomacia cultural.' },
+                { title: '📚 Onde Estudar Mais Sobre a Arte', content: 'Para aprofundar seus conhecimentos, busque os livros clássicos como a "Enciclopédia do Taekwon-Do" do General Choi Hong Hi. Acompanhe os sites oficiais do <strong>Kukkiwon</strong> e da <strong>World Taekwondo</strong>. Documentários sobre a história da Coreia e das artes marciais também oferecem um contexto valioso. Por fim, a fonte mais rica de conhecimento será sempre seu <strong>Mestre (Sabeomnim)</strong>; não hesite em perguntar e aprender com sua experiência.' }
             ],
             numbers: [
                 { num: 0, kor: 'Yeong/Gong', pro: 'IÓNG/GONG', sino_kor: 'Yeong/Gong', sino_pro: 'IÓNG/GONG' },
@@ -177,25 +190,228 @@
                 { num: 100, kor: 'Baek', pro: 'BÉK', sino_kor: 'Baek', sino_pro: 'BÉK' }
             ],
             glossary: [
-                { category: 'Comandos de Aula', terms: [
-                    { korean: 'Charyot', pronunciation: 'TCHA-riót', translation: 'Sentido / Atenção' },
-                    { korean: 'Gyeongnye', pronunciation: 'GUIÓNG-niê', translation: 'Cumprimentar / Reverência' },
-                    { korean: 'Jumbi', pronunciation: 'DJUM-bí', translation: 'Preparar' },
-                    { korean: 'Shijak', pronunciation: 'XI-djak', translation: 'Começar' },
-                    { korean: 'Geuman', pronunciation: 'GU-man', translation: 'Parar' },
-                    { korean: 'Baro', pronunciation: 'BA-rô', translation: 'Voltar (à posição inicial)' },
-                    { korean: 'Swieo', pronunciation: 'XUÍ-ô', translation: 'Descansar' },
-                    { korean: 'Kihap', pronunciation: 'QUI-rráp', translation: 'Grito (exteriorização da energia)' }
-                ]},
-                { category: 'Termos Gerais', terms: [
-                    { korean: 'Dojang', pronunciation: 'DO-djang', translation: 'Local de treino' },
-                    { korean: 'Dobok', pronunciation: 'DO-bok', translation: 'Uniforme de treino' },
-                    { korean: 'Ti', pronunciation: 'TÍ', translation: 'Faixa' },
-                    { korean: 'Sabonim', pronunciation: 'SA-bom-ním', translation: 'Mestre (4º DAN ou superior)' },
-                    { korean: 'Kyosanim', pronunciation: 'QUIÔ-sa-ním', translation: 'Instrutor (1º ao 3º DAN)' },
-                    { korean: 'Poomsae', pronunciation: 'PUM-sê', translation: 'Forma / Sequência de movimentos' },
-                    { korean: 'Kyorugi', pronunciation: 'QUIÔ-ru-guí', translation: 'Luta' }
-                ]}
+                {
+                    mainCategory: "I. Fundamentos e Protocolo do Dojang",
+                    subCategories: [
+                        {
+                            category: "Comandos Essenciais (기본 구령 - Gibon Guryeong)",
+                            terms: [
+                                { korean: "Charyeot", hangul: "차렷", pronunciation: "TCHA-riót", translation: "Sentido / Atenção" },
+                                { korean: "Gyeongnye", hangul: "경례", pronunciation: "GUIÔNG-niê", translation: "Cumprimentar" },
+                                { korean: "Junbi", hangul: "준비", pronunciation: "DJUN-bí", translation: "Preparar / Pronto" },
+                                { korean: "Sijak", hangul: "시작", pronunciation: "SHI-dják", translation: "Começar" },
+                                { korean: "Geuman", hangul: "그만", pronunciation: "GU-man", translation: "Parar" },
+                                { korean: "Baro", hangul: "바로", pronunciation: "BA-rô", translation: "Retornar (à posição)" },
+                                { korean: "Swieo", hangul: "쉬어", pronunciation: "XÜI-ó", translation: "Relaxar / Descansar" },
+                                { korean: "Kihap", hangul: "기합", pronunciation: "QUI-ráp", translation: "Grito de Energia" },
+                                { korean: "Dwiro Dora", hangul: "뒤로 돌아", pronunciation: "DUÍ-ro DÔ-rá", translation: "Virar / Meia-volta" },
+                                { korean: "Mureup Kkulko", hangul: "무릎 꿇고", pronunciation: "MÚ-rup CUL-cô", translation: "Ajoelhar" },
+                                { korean: "Ireoseot", hangul: "일어서", pronunciation: "I-ró-sót", translation: "Levantar" },
+                                { korean: "Gyesok", hangul: "계속", pronunciation: "GUIÊ-sôk", translation: "Continuar" },
+                                { korean: "Kallyeo", hangul: "갈려", pronunciation: "CAL-lió", translation: "Separar (em Luta)" },
+                                { korean: "Hae San", hangul: "해산", pronunciation: "RÉ-san", translation: "Dispensar / Fim da Aula" }
+                            ]
+                        },
+                        {
+                            category: "Direções e Alturas (방향과 높이 - Banghyanggwa Nopi)",
+                            terms: [
+                                { korean: "Ap", hangul: "앞", pronunciation: "ÁP", translation: "Frente" },
+                                { korean: "Dwi", hangul: "뒤", pronunciation: "DUÍ", translation: "Atrás" },
+                                { korean: "Yeop", hangul: "옆", pronunciation: "IÓP", translation: "Lado" },
+                                { korean: "Oreun", hangul: "오른", pronunciation: "Ô-run", translation: "Direito" },
+                                { korean: "Wen", hangul: "왼", pronunciation: "UÉN", translation: "Esquerdo" },
+                                { korean: "An", hangul: "안", pronunciation: "AN", translation: "Dentro" },
+                                { korean: "Bakkat", hangul: "바깥", pronunciation: "BA-cát", translation: "Fora" },
+                                { korean: "Arae", hangul: "아래", pronunciation: "A-ré", translation: "Nível Baixo" },
+                                { korean: "Momtong", hangul: "몸통", pronunciation: "MÔM-tông", translation: "Nível Médio (Tronco)" },
+                                { korean: "Olgul", hangul: "얼굴", pronunciation: "ÓL-gul", translation: "Nível Alto (Rosto)" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    mainCategory: "II. Anatomia Marcial (신체 무기 - Sinche Mugi)",
+                    subCategories: [
+                        {
+                            category: "Partes do Corpo (신체 부위 - Sinche Buwi)",
+                            terms: [
+                                { korean: "Meori", hangul: "머리", pronunciation: "MÓ-ri", translation: "Cabeça" },
+                                { korean: "Olgul", hangul: "얼굴", pronunciation: "ÓL-gul", translation: "Rosto" },
+                                { korean: "Mok", hangul: "목", pronunciation: "MÔK", translation: "Pescoço" },
+                                { korean: "Eokkae", hangul: "어깨", pronunciation: "Ó-qué", translation: "Ombro" },
+                                { korean: "Deung", hangul: "등", pronunciation: "DUNG", translation: "Costas" },
+                                { korean: "Gaseum", hangul: "가슴", pronunciation: "GA-sum", translation: "Peito" },
+                                { korean: "Bokbu", hangul: "복부", pronunciation: "BÔK-bu", translation: "Abdômen" },
+                                { korean: "Pal", hangul: "팔", pronunciation: "PAL", translation: "Braço" },
+                                { korean: "Palkup", hangul: "팔굽", pronunciation: "PAL-kup", translation: "Cotovelo" },
+                                { korean: "Palmok", hangul: "팔목", pronunciation: "PAL-môk", translation: "Antebraço" },
+                                { korean: "Sonmok", hangul: "손목", pronunciation: "SÔN-môk", translation: "Pulso" },
+                                { korean: "Son", hangul: "손", pronunciation: "SÔN", translation: "Mão" },
+                                { korean: "Dari", hangul: "다리", pronunciation: "DA-ri", translation: "Perna" },
+                                { korean: "Heobeokji", hangul: "허벅지", pronunciation: "RÓ-bók-dji", translation: "Coxa" },
+                                { korean: "Mureup", hangul: "무릎", pronunciation: "MÚ-rup", translation: "Joelho" },
+                                { korean: "Jeonggang-i", hangul: "정강이", pronunciation: "DJÓN-gang-i", translation: "Canela" },
+                                { korean: "Balmok", hangul: "발목", pronunciation: "BAL-môk", translation: "Tornozelo" },
+                                { korean: "Bal", hangul: "발", pronunciation: "BAL", translation: "Pé" }
+                            ]
+                        },
+                        {
+                            category: "Armas Naturais (자연 무기 - Jayeon Mugi)",
+                            terms: [
+                                { korean: "Ap Jumeok", hangul: "앞주먹", pronunciation: "ÁP DJU-mók", translation: "Punho Frontal" },
+                                { korean: "Deung Jumeok", hangul: "등주먹", pronunciation: "DUNG DJU-mók", translation: "Dorso do Punho" },
+                                { korean: "Me Jumeok", hangul: "메주먹", pronunciation: "MÊ DJU-mók", translation: "Punho de Martelo" },
+                                { korean: "Batang Son", hangul: "바탕손", pronunciation: "BA-tang SÔN", translation: "Palma da Mão (Base)" },
+                                { korean: "Sonnal", hangul: "손날", pronunciation: "SÔN-nál", translation: "Faca da Mão (Borda Externa)" },
+                                { korean: "Sonnal Deung", hangul: "손날등", pronunciation: "SÔN-nál DUNG", translation: "Faca da Mão Interna" },
+                                { korean: "Pyeonsonkkeut", hangul: "편손끝", pronunciation: "PIÓN-sôn-CUT", translation: "Ponta dos Dedos" },
+                                { korean: "Baldeung", hangul: "발등", pronunciation: "BAL-dung", translation: "Peito do Pé" },
+                                { korean: "Apchuk", hangul: "앞축", pronunciation: "ÁP-tchúk", translation: "Bola do Pé" },
+                                { korean: "Balnal", hangul: "발날", pronunciation: "BAL-nál", translation: "Faca do Pé (Borda Externa)" },
+                                { korean: "Dwichuk", hangul: "뒤축", pronunciation: "DUÍ-tchúk", translation: "Calcanhar (Sola)" }
+                            ]
+                        },
+                        {
+                            category: "Pontos Vitais (급소 - Geupso)",
+                            terms: [
+                                { korean: "Ima", hangul: "이마", pronunciation: "I-má", translation: "Testa" },
+                                { korean: "Gwanja Nori", hangul: "관자놀이", pronunciation: "GUAN-dja NÔ-ri", translation: "Têmpora" },
+                                { korean: "Injung", hangul: "인중", pronunciation: "IN-djung", translation: "Abaixo do Nariz (Filtro)" },
+                                { korean: "Teok", hangul: "턱", pronunciation: "TÓK", translation: "Mandíbula" },
+                                { korean: "Gyeol Hu", hangul: "결후", pronunciation: "GUIÓL-ru", translation: "Pomo de Adão" },
+                                { korean: "Swegol", hangul: "쇄골", pronunciation: "SUÊ-gól", translation: "Clavícula" },
+                                { korean: "Myeongchi", hangul: "명치", pronunciation: "MIÓNG-tchi", translation: "Plexo Solar" },
+                                { korean: "Nuk Gol", hangul: "늑골", pronunciation: "NUK-gól", translation: "Costelas Flutuantes" },
+                                { korean: "Gyeodurang", hangul: "겨드랑이", pronunciation: "GUIÓ-du-rang", translation: "Axila" },
+                                { korean: "Sataguni", hangul: "사타구니", pronunciation: "SA-ta-gu-ni", translation: "Virilha" },
+                                { korean: "Ogeum", hangul: "오금", pronunciation: "Ô-gum", translation: "Fossa Poplítea (Atrás do Joelho)" },
+                                { korean: "Nangsim", hangul: "낭심", pronunciation: "NANG-shim", translation: "Genitais" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    mainCategory: "III. A Arte do Movimento (기술 - Gisul)",
+                    subCategories: [
+                        {
+                            category: "Bases (서기 - Seogi)",
+                            terms: [
+                                { korean: "Moa Seogi", hangul: "모아서기", pronunciation: "MÔ-a SÓ-guí", translation: "Base de Atenção" },
+                                { korean: "Naranhi Seogi", hangul: "나란히서기", pronunciation: "NA-ran-ri SÓ-guí", translation: "Base de Preparar" },
+                                { korean: "Ap Seogi", hangul: "앞서기", pronunciation: "ÁP SÓ-guí", translation: "Base de Andar" },
+                                { korean: "Ap Gubi", hangul: "앞굽이", pronunciation: "ÁP GU-bí", translation: "Base Frontal Longa" },
+                                { korean: "Dwit Gubi", hangul: "뒷굽이", pronunciation: "DUÍT GU-bí", translation: "Base Recuada / em \"L\"" },
+                                { korean: "Juchum Seogi", hangul: "주춤서기", pronunciation: "DJU-tchum SÓ-guí", translation: "Base a Cavalo" },
+                                { korean: "Beom Seogi", hangul: "범서기", pronunciation: "BÓM SÓ-guí", translation: "Base de Tigre" },
+                                { korean: "Kkoa Seogi", hangul: "꼬아서기", pronunciation: "CÔ-a SÓ-guí", translation: "Base com Pés Cruzados" },
+                                { korean: "Hakdari Seogi", hangul: "학다리서기", pronunciation: "RÁK-da-ri SÓ-guí", translation: "Base de Garça" }
+                            ]
+                        },
+                        {
+                            category: "Defesas (막기 - Makki)",
+                            terms: [
+                                { korean: "Arae Makki", hangul: "아래막기", pronunciation: "A-ré MÁ-quí", translation: "Defesa Baixa" },
+                                { korean: "Momtong An Makki", hangul: "몸통 안막기", pronunciation: "MÔM-tông AN MÁ-quí", translation: "Defesa no Tronco (para Dentro)" },
+                                { korean: "Momtong Bakkat Makki", hangul: "몸통 바깥막기", pronunciation: "MÔM-tông BA-cát MÁ-quí", translation: "Defesa no Tronco (para Fora)" },
+                                { korean: "Olgul Makki", hangul: "얼굴막기", pronunciation: "ÓL-gul MÁ-quí", translation: "Defesa no Rosto" },
+                                { korean: "Sonnal Makki", hangul: "손날막기", pronunciation: "SÔN-nál MÁ-quí", translation: "Defesa com Faca da Mão" },
+                                { korean: "Gawi Makki", hangul: "가위막기", pronunciation: "GA-uí MÁ-quí", translation: "Defesa Tesoura" },
+                                { korean: "Otgoreo Makki", hangul: "엇걸어막기", pronunciation: "ÓT-go-ró MÁ-quí", translation: "Defesa Cruzada" },
+                                { korean: "Godureo Makki", hangul: "거들어막기", pronunciation: "GÓ-du-ró MÁ-quí", translation: "Defesa Apoiada/Reforçada" },
+                                { korean: "Hechyeo Makki", hangul: "헤쳐막기", pronunciation: "RÉ-tchó MÁ-quí", translation: "Defesa Dupla (Abrindo)" }
+                            ]
+                        },
+                        {
+                            category: "Ataques (공격 - Gonggyok)",
+                            terms: [
+                                { korean: "Jireugi", hangul: "지르기", pronunciation: "DJI-ru-guí", translation: "Soco" },
+                                { korean: "Chigi", hangul: "치기", pronunciation: "TCHI-guí", translation: "Golpe (Bater)" },
+                                { korean: "Jjireugi", hangul: "찌르기", pronunciation: "TÍ-ru-guí", translation: "Perfuração" },
+                                { korean: "Chagi", hangul: "차기", pronunciation: "TCHA-guí", translation: "Chute" },
+                                { korean: "Ap Chagi", hangul: "앞차기", pronunciation: "ÁP TCHA-guí", translation: "Chute Frontal" },
+                                { korean: "Dollyo Chagi", hangul: "돌려차기", pronunciation: "DÔL-lió TCHA-guí", translation: "Chute Circular" },
+                                { korean: "Yeop Chagi", hangul: "옆차기", pronunciation: "IÓP TCHA-guí", translation: "Chute Lateral" },
+                                { korean: "Dwi Chagi", hangul: "뒤차기", pronunciation: "DUÍ TCHA-guí", translation: "Chute para Trás" },
+                                { korean: "Naeryeo Chagi", hangul: "내려차기", pronunciation: "NÉ-rió TCHA-guí", translation: "Chute Descendente" },
+                                { korean: "Mireo Chagi", hangul: "밀어차기", pronunciation: "MI-ró TCHA-guí", translation: "Chute de Empurrar" },
+                                { korean: "An Chagi", hangul: "안 차기", pronunciation: "AN TCHA-guí", translation: "Chute Crescente para Dentro" },
+                                { korean: "Bakkat Chagi", hangul: "바깥 차기", pronunciation: "BA-cát TCHA-guí", translation: "Chute Crescente para Fora" },
+                                { korean: "Mondollyo Chagi", hangul: "몸돌려차기", pronunciation: "MÔN-dôl-lió TCHA-guí", translation: "Chute Tornado" },
+                                { korean: "Ttwieo Chagi", hangul: "뛰어 차기", pronunciation: "TÜÍ-ó TCHA-guí", translation: "Chute com Salto" }
+                            ]
+                        },
+                        {
+                            category: "Ações Gerais (일반 동작 - Ilban Dongjak)",
+                            terms: [
+                                { korean: "Japgi", hangul: "잡기", pronunciation: "DJÁP-quí", translation: "Agarrar" },
+                                { korean: "Milgi", hangul: "밀기", pronunciation: "MIL-guí", translation: "Empurrar" },
+                                { korean: "Danggigi", hangul: "당기기", pronunciation: "DANG-gui-guí", translation: "Puxar" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    mainCategory: "IV. Pilares do Treino e Aplicação Prática",
+                    subCategories: [
+                        {
+                            category: "Formas (품새 - Poomsae)",
+                            terms: [
+                                { korean: "Poomsae", hangul: "품새", pronunciation: "PUM-sé", translation: "Forma / Padrão" },
+                                { korean: "Seon", hangul: "선", pronunciation: "SÓN", translation: "Linha de Execução do Poomsae" }
+                            ]
+                        },
+                        {
+                            category: "Luta (겨루기 - Gyeorugi)",
+                            terms: [
+                                { korean: "Gyeorugi", hangul: "겨루기", pronunciation: "GUIO-ru-guí", translation: "Luta / Combate" },
+                                { korean: "Yaksok Gyeorugi", hangul: "약속 겨루기", pronunciation: "IÁK-sôk GUIO-ru-guí", translation: "Luta Combinada" },
+                                { korean: "Sihap Gyeorugi", hangul: "시합 겨루기", pronunciation: "SHI-ráp GUIO-ru-guí", translation: "Luta de Competição" },
+                                { korean: "Hogu", hangul: "호구", pronunciation: "RÔ-gu", translation: "Protetor de Tórax" },
+                                { korean: "Meori Bohodae", hangul: "머리 보호대", pronunciation: "MÓ-ri BÔ-rô-dé", translation: "Protetor de Cabeça" },
+                                { korean: "Cheong", hangul: "청", pronunciation: "TCHÓN", translation: "Lutador Azul" },
+                                { korean: "Hong", hangul: "홍", pronunciation: "RÔNG", translation: "Lutador Vermelho" },
+                                { korean: "Deukjeom", hangul: "득점", pronunciation: "DUK-djóm", translation: "Ponto Válido" },
+                                { korean: "Gyeong-go", hangul: "경고", pronunciation: "GUIÓNG-gô", translation: "Advertência" },
+                                { korean: "Gam-jeom", hangul: "감점", pronunciation: "GAM-djóm", translation: "Ponto de Punição" },
+                                { korean: "Seungja", hangul: "승자", pronunciation: "SUNG-djá", translation: "Vencedor" }
+                            ]
+                        },
+                        {
+                            category: "Quebramento (격파 - Gyeokpa)",
+                            terms: [
+                                { korean: "Gyeokpa", hangul: "격파", pronunciation: "GUIÓK-pá", translation: "Quebramento" },
+                                { korean: "Wiryeok Gyeokpa", hangul: "위력격파", pronunciation: "UÍ-riók GUIÓK-pá", translation: "Quebramento de Força" },
+                                { korean: "Gisul Gyeokpa", hangul: "기술격파", pronunciation: "GUI-sul GUIÓK-pá", translation: "Quebramento de Técnica" }
+                            ]
+                        },
+                        {
+                            category: "Defesa Pessoal (호신술 - Hoshinsul)",
+                            terms: [
+                                { korean: "Hoshinsul", hangul: "호신술", pronunciation: "RÔ-shin-sul", translation: "Defesa Pessoal" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    mainCategory: "V. Os Princípios do \"Do\" (태권도 정신 - Taekwondo Jeongsin)",
+                    subCategories: [
+                        {
+                            category: "Termos Filosóficos e Gerais",
+                            terms: [
+                                { korean: "Seonseo", hangul: "선서", pronunciation: "SÓN-só", translation: "Juramento" },
+                                { korean: "Dobok", hangul: "도복", pronunciation: "DÔ-bôk", translation: "Uniforme" },
+                                { korean: "Tti", hangul: "띠", pronunciation: "TÍ", translation: "Faixa" },
+                                { korean: "Dojang", hangul: "도장", pronunciation: "DÔ-djang", translation: "Local de Treino" },
+                                { korean: "Simsa", hangul: "심사", pronunciation: "SHIM-sá", translation: "Exame de Faixa" },
+                                { korean: "Ye Ui", hangul: "예의", pronunciation: "IÊ-uí", translation: "Cortesia" },
+                                { korean: "Yom Chi", hangul: "염치", pronunciation: "IÓM-tchi", translation: "Integridade" },
+                                { korean: "In Nae", hangul: "인내", pronunciation: "IN-né", translation: "Perseverança" },
+                                { korean: "Guk Gi", hangul: "극기", pronunciation: "GUK-quí", translation: "Autocontrole" },
+                                { korean: "Baekjeol Bulgul", hangul: "백절불굴", pronunciation: "BÉK-djól BUL-gul", translation: "Espírito Indomável" }
+                            ]
+                        }
+                    ]
+                }
             ],
             principles: {
                 introduction: [
@@ -204,6 +420,7 @@
                 ],
                 oath: {
                     title: 'Juramento do Taekwondo',
+                    prefix: 'Eu prometo...',
                     items: [
                         'Observar as regras do Taekwondo.',
                         'Respeitar meus instrutores e superiores.',
@@ -224,13 +441,30 @@
                     title: 'A Bandeira da Coreia do Sul (Taegeukgi)',
                     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/2560px-Flag_of_South_Korea.svg.png',
                     altText: 'Bandeira da Coreia do Sul',
-                    content: 'A bandeira simboliza o equilíbrio do universo. O fundo branco representa a paz e a pureza. O círculo no centro, chamado <b>Taegeuk</b>, representa a origem de tudo, com o azul (<b>Eum</b>/Yin) significando o negativo/a noite, e o vermelho (<b>Yang</b>) o positivo/o dia. Os quatro trigramas (<b>Gwe</b>) ao redor representam os elementos e virtudes:',
-                    symbols: [
-                        { symbol: '☰ (Geon)', meaning: 'Céu, Primavera, Leste, Humanidade.' },
-                        { symbol: '☲ (Ri)', meaning: 'Sol, Fogo, Outono, Sul, Justiça.' },
-                        { symbol: '☵ (Gam)', meaning: 'Lua, Água, Inverno, Norte, Inteligência.' },
-                        { symbol: '☷ (Gon)', meaning: 'Terra, Verão, Oeste, Cortesia.' }
-                    ]
+                    introduction: 'A bandeira da Coreia do Sul é profundamente simbólica. O <strong>fundo branco</strong> representa a paz e a pureza. Para compreendê-la, devemos entender o conceito filosófico do Tao.',
+                    taoism: {
+                        title: 'O Tao: O Princípio Universal',
+                        content: 'O <strong>Tao (도)</strong> é o "caminho" ou "princípio" que rege o Universo. Ele abrange tanto o que podemos perceber quanto o imperceptível, que juntos formam a realidade. <br><br>É fundamental notar que, na concepção da filosofia Taoista, não existem os conceitos imutáveis de Bem/Mal ou Certo/Errado. Essas são ideias que dependem da interpretação do momento.'
+                    },
+                    taiji: {
+                        title: 'O Taegeuk (Taiji): A Dualidade em Equilíbrio',
+                        content: 'O círculo no centro da bandeira é o <strong>Taegeuk (태극)</strong>, a representação da realidade manifesta. Ele é formado por duas energias opostas e complementares em movimento infinito:',
+                        energies: [
+                            { name: 'Yang (양)', color: 'text-red-600', description: 'O <strong>vermelho</strong> representa o positivo, o ativo, o princípio masculino, a luz e o céu.' },
+                            { name: 'Eum (음 - Yin)', color: 'text-blue-600', description: 'O <strong>azul</strong> representa o negativo, o passivo, o princípio feminino, a escuridão e a terra.' }
+                        ],
+                        conclusion: 'Juntos, Eum e Yang mostram que tudo no universo possui opostos que se complementam e vivem em harmonia.'
+                    },
+                    trigrams: {
+                         title: 'Os Quatro Trigramas (괘 - Gwe)',
+                         content: 'Os quatro trigramas ao redor do Taegeuk representam os elementos e virtudes em movimento e equilíbrio:',
+                         symbols: [
+                             { symbol: '☰ (Geon)', meaning: 'Céu, Primavera, Leste, Humanidade.' },
+                             { symbol: '☲ (Ri)', meaning: 'Sol, Fogo, Outono, Sul, Justiça.' },
+                             { symbol: '☵ (Gam)', meaning: 'Lua, Água, Inverno, Norte, Inteligência.' },
+                             { symbol: '☷ (Gon)', meaning: 'Terra, Verão, Oeste, Cortesia.' }
+                         ]
+                    }
                 },
                 corePrinciples: [
                     { title: '예의 (Ye Ui) - Cortesia', content: 'Ser amável e respeitoso com todos. Tratar os outros como você gostaria de ser tratado. A cortesia é a base para a harmonia e o respeito mútuo dentro e fora do dojang.' },
@@ -266,7 +500,6 @@
             renderNumbers();
             
             document.getElementById('searchInput').addEventListener('input', filterAndRender);
-            document.body.addEventListener('click', handleShareClick);
         });
 
         // --- NAVEGAÇÃO ---
@@ -301,7 +534,9 @@
             let hasResults = false;
 
             filteredCurriculum.forEach(beltData => {
-                if (beltData.techniques.length === 0) return;
+                 if ((!beltData.techniques || beltData.techniques.length === 0) && !beltData.examMaterial) {
+                    return; 
+                }
                 hasResults = true;
 
                 const accordionItem = document.createElement('div');
@@ -313,30 +548,33 @@
 
                 const content = document.createElement('div');
                 content.className = 'accordion-content';
-                const techGrid = document.createElement('div');
-                techGrid.className = 'grid grid-cols-1 md:grid-cols-2 gap-4';
 
-                beltData.techniques.forEach(tech => {
-                    const card = document.createElement('div');
-                    card.className = 'bg-gray-50 p-4 rounded-lg border border-gray-200 flex flex-col relative';
-                    card.innerHTML = `
-                        <div class="flex-grow">
-                            <h3 class="text-lg font-bold text-gray-900">${tech.korean}</h3>
-                            <p class="text-blue-600 font-semibold mb-2 italic">(${tech.pronunciation})</p>
-                            <p class="text-gray-700 font-medium">${tech.translation}</p>
-                        </div>
-                        <button class="share-btn absolute top-2 right-2 text-green-500 hover:text-green-600" 
-                                data-share-type="technique" 
-                                data-korean="${tech.korean}" 
-                                data-translation="${tech.translation}"
-                                title="Compartilhar no WhatsApp">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                        </button>
-                    `;
-                    techGrid.appendChild(card);
-                });
+                if (beltData.examMaterial) {
+                    content.innerHTML = buildExamHtml(beltData.examMaterial);
+                    // Adiciona listeners para os checkboxes recém-criados
+                    content.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                        cb.addEventListener('change', (e) => {
+                            localStorage.setItem(e.target.dataset.id, e.target.checked);
+                        });
+                    });
+                } else if (beltData.techniques && beltData.techniques.length > 0) {
+                     const techGrid = document.createElement('div');
+                     techGrid.className = 'grid grid-cols-1 md:grid-cols-2 gap-4';
+                     beltData.techniques.forEach(tech => {
+                        const card = document.createElement('div');
+                        card.className = 'bg-gray-50 p-4 rounded-lg border border-gray-200 flex flex-col relative';
+                        card.innerHTML = `
+                            <div class="flex-grow">
+                                <h3 class="text-lg font-bold text-gray-900">${tech.korean}</h3>
+                                <p class="text-blue-600 font-semibold mb-2 italic">(${tech.pronunciation})</p>
+                                <p class="text-gray-700 font-medium">${tech.translation}</p>
+                            </div>
+                        `;
+                        techGrid.appendChild(card);
+                    });
+                    content.appendChild(techGrid);
+                }
 
-                content.appendChild(techGrid);
                 accordionItem.appendChild(header);
                 accordionItem.appendChild(content);
                 beltList.appendChild(accordionItem);
@@ -355,7 +593,41 @@
                     content.style.maxHeight = !isOpen ? content.scrollHeight + 48 + "px" : null;
                 });
             });
-            noResults.classList.toggle('hidden', hasResults);
+            noResults.classList.toggle('hidden', !hasResults);
+        }
+        
+        function buildExamHtml(material) {
+            let html = '';
+            for (const key in material) {
+                const section = material[key];
+                html += `<h3 class="text-xl font-bold text-blue-600 mt-4 mb-3 border-b-2 border-blue-100 pb-2">${section.title}</h3>`;
+                html += '<div class="space-y-4">';
+                section.items.forEach(item => {
+                    const isChecked = localStorage.getItem(item.id) === 'true';
+                    html += `
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <label class="flex items-start cursor-pointer">
+                                <input type="checkbox" data-id="${item.id}" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mt-1 flex-shrink-0" ${isChecked ? 'checked' : ''}>
+                                <span class="ml-3 text-lg font-semibold text-gray-800">${item.name}</span>
+                            </label>`;
+                    if (item.description || item.correction || item.objective) {
+                         html += `<div class="pl-8 mt-2 text-sm text-gray-600 space-y-2">`;
+                         if (item.correction) {
+                             html += `<p class="italic text-orange-600"><b class="font-semibold">Correção:</b> ${item.correction}</p>`;
+                         }
+                         if(item.description){
+                             html += `<p><b class="font-semibold text-gray-700">Descrição:</b> ${item.description}</p>`;
+                         }
+                         if (item.objective) {
+                             html += `<p><b class="font-semibold text-gray-700">Objetivo:</b> ${item.objective}</p>`;
+                         }
+                         html += `</div>`;
+                    }
+                    html += `</div>`;
+                });
+                html += '</div>';
+            }
+            return html;
         }
 
         function renderTools() {
@@ -381,44 +653,172 @@
             const container = document.getElementById('principles');
             container.innerHTML = '';
             const p = db.principles;
+
+            // Introduction (Significado e Espírito)
             p.introduction.forEach(item => { container.innerHTML += `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${item.title}</h2><p class="text-gray-700 leading-relaxed">${item.content}</p></div>`; });
-            let oathHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${p.oath.title}</h2><ul class="list-disc list-inside space-y-2 text-gray-700">`;
-            p.oath.items.forEach(item => { oathHtml += `<li>${item}</li>`; });
-            oathHtml += `</ul></div>`;
-            container.innerHTML += oathHtml;
-            let ritualsHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${p.rituals.title}</h2><div class="space-y-4">`;
-            p.rituals.items.forEach(item => { ritualsHtml += `<div class="bg-gray-50 p-4 rounded-lg border border-gray-200"><h3 class="font-semibold text-blue-600">${item.title}</h3><p class="text-sm text-gray-600">${item.content}</p></div>`; });
-            ritualsHtml += `</div></div>`;
-            container.innerHTML += ritualsHtml;
-            let flagHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${p.flag.title}</h2><div class="flex flex-col md:flex-row gap-6 items-center"><img src="${p.flag.imageUrl}" alt="${p.flag.altText}" class="w-full md:w-1/3 rounded-lg shadow-md border"><div class="flex-1"><p class="text-gray-700 leading-relaxed mb-4">${p.flag.content}</p><div class="grid grid-cols-2 gap-2">`;
-            p.flag.symbols.forEach(s => { flagHtml += `<div class="bg-gray-50 p-2 rounded-md"><b class="text-lg">${s.symbol}</b>: ${s.meaning}</div>`; });
-            flagHtml += `</div></div></div></div>`;
-            container.innerHTML += flagHtml;
+            
+            // 5 Princípios Fundamentais
             let coreHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">Os 5 Princípios Fundamentais</h2><div class="space-y-4">`;
             p.corePrinciples.forEach(item => { coreHtml += `<div class="bg-gray-50 p-4 rounded-lg border border-gray-200"><h3 class="text-xl font-semibold text-blue-600 mb-2">${item.title}</h3><p class="text-gray-700 leading-relaxed">${item.content}</p></div>`; });
             coreHtml += `</div></div>`;
             container.innerHTML += coreHtml;
+            
+            // Juramento
+            let oathHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${p.oath.title}</h2>`;
+            if (p.oath.prefix) {
+                oathHtml += `<p class="text-gray-700 font-semibold mb-2">${p.oath.prefix}</p>`;
+            }
+            oathHtml += `<ul class="list-disc list-inside space-y-2 text-gray-700 pl-4">`;
+            p.oath.items.forEach(item => { oathHtml += `<li>${item}</li>`; });
+            oathHtml += `</ul></div>`;
+            container.innerHTML += oathHtml;
+            
+            // Rituais
+            let ritualsHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${p.rituals.title}</h2><div class="space-y-4">`;
+            p.rituals.items.forEach(item => { ritualsHtml += `<div class="bg-gray-50 p-4 rounded-lg border border-gray-200"><h3 class="font-semibold text-blue-600">${item.title}</h3><p class="text-sm text-gray-600">${item.content}</p></div>`; });
+            ritualsHtml += `</div></div>`;
+            container.innerHTML += ritualsHtml;
+
+            // Bandeira (seção atualizada)
+            const f = p.flag;
+            let flagHtml = `<div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-3">${f.title}</h2>
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 space-y-6">
+                    <div>
+                        <p class="text-gray-700 leading-relaxed">${f.introduction}</p>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4">
+                        <h3 class="font-semibold text-lg text-blue-600 mb-2">${f.taoism.title}</h3>
+                        <p class="text-gray-700 leading-relaxed">${f.taoism.content}</p>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-6 items-center border-t border-gray-200 pt-4">
+                        <img src="${f.imageUrl}" alt="${f.altText}" class="w-full md:w-1/3 rounded-lg shadow-md border self-start">
+                        <div class="flex-1 space-y-4">
+                             <h3 class="font-semibold text-lg text-blue-600">${f.taiji.title}</h3>
+                             <p class="text-gray-700 leading-relaxed">${f.taiji.content}</p>
+                             <div class="space-y-2">
+                                <p><strong class="${f.taiji.energies[0].color}">${f.taiji.energies[0].name}:</strong> ${f.taiji.energies[0].description}</p>
+                                <p><strong class="${f.taiji.energies[1].color}">${f.taiji.energies[1].name}:</strong> ${f.taiji.energies[1].description}</p>
+                             </div>
+                             <p class="text-gray-700 leading-relaxed italic">${f.taiji.conclusion}</p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4">
+                        <h3 class="font-semibold text-lg text-blue-600 mb-2">${f.trigrams.title}</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">${f.trigrams.content}</p>
+                        <div class="grid grid-cols-2 gap-3">`;
+            f.trigrams.symbols.forEach(s => { flagHtml += `<div class="bg-white p-3 rounded-md shadow-sm"><b class="text-xl">${s.symbol}</b>: ${s.meaning}</div>`; });
+            flagHtml += `       </div>
+                            </div>
+                        </div>
+                    </div>`;
+            container.innerHTML += flagHtml;
+
+            // Significado das Faixas
             let beltsHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-3">${p.beltMeanings.title}</h2><div class="space-y-4">`;
             p.beltMeanings.belts.forEach(item => { beltsHtml += `<div class="bg-gray-50 p-4 rounded-lg border border-gray-200"><h3 class="text-xl font-semibold mb-2 flex items-center">${item.color} <span class="ml-3 text-2xl">${item.symbol}</span></h3><p class="text-gray-700 leading-relaxed">${item.meaning}</p></div>`; });
             beltsHtml += `</div></div>`;
             container.innerHTML += beltsHtml;
         }
 
+
         function renderGlossary() {
             const container = document.getElementById('glossary');
-            container.innerHTML = '';
-            db.glossary.forEach(category => {
-                let categoryHtml = `<div class="mb-8"><h2 class="text-2xl font-bold text-gray-900 mb-4">${category.category}</h2><div class="space-y-4">`;
-                category.terms.forEach(term => {
-                    categoryHtml += `<div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                        <h3 class="text-lg font-bold text-gray-900">${term.korean}</h3>
-                        <p class="text-blue-600 font-semibold mb-2 italic">(${term.pronunciation})</p>
-                        <p class="text-gray-700 font-medium">${term.translation}</p>
-                    </div>`;
+            if (!container) return;
+            container.innerHTML = `
+                <div class="bg-blue-50 border-l-4 border-blue-400 text-blue-800 p-4 rounded-lg mb-6 shadow" role="alert">
+                    <p class="font-bold">Nota:</p>
+                    <p class="text-sm">A pronúncia do coreano tem nuances sutis. Esta guia fonética é a melhor aproximação possível. A prática ideal é sempre ouvir a pronúncia de um mestre ou falante nativo e usar esta lista como seu reforço.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                    <input type="text" id="glossarySearch" class="w-full sm:w-2/3 p-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500" placeholder="Buscar termo...">
+                    <select id="glossaryFilter" class="w-full sm:w-1/3 p-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500">
+                        <option value="all">Todas as Categorias</option>
+                    </select>
+                </div>
+                <div id="glossaryList" class="space-y-8"></div>`;
+
+            const glossaryList = document.getElementById('glossaryList');
+            const filterSelect = document.getElementById('glossaryFilter');
+
+            // Preenche o filtro com as novas subcategorias
+            db.glossary.forEach(mainCat => {
+                mainCat.subCategories.forEach(subCat => {
+                    filterSelect.innerHTML += `<option value="${subCat.category}">${subCat.category}</option>`;
                 });
-                categoryHtml += `</div></div>`;
-                container.innerHTML += categoryHtml;
             });
+
+            function displayGlossary(filteredData) {
+                glossaryList.innerHTML = '';
+                if (filteredData.length === 0) {
+                    glossaryList.innerHTML = '<p class="text-center text-gray-500">Nenhum termo encontrado.</p>';
+                    return;
+                }
+                filteredData.forEach(mainCat => {
+                    const mainTitle = document.createElement('h2');
+                    mainTitle.className = "text-3xl font-bold text-gray-900 border-b-2 border-blue-200 pb-2 mb-4";
+                    mainTitle.innerHTML = mainCat.mainCategory;
+                    glossaryList.appendChild(mainTitle);
+                    
+                    mainCat.subCategories.forEach(subCat => {
+                        const subCategoryWrapper = document.createElement('div');
+                        subCategoryWrapper.className = 'glossary-subcategory mb-6';
+
+                        let categoryHtml = `<h3 class="text-2xl font-semibold text-blue-600 mb-4">${subCat.category}</h3>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
+                        subCat.terms.forEach(term => {
+                            categoryHtml += `<div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <h4 class="text-lg font-bold text-gray-900">${term.korean} <span class="text-xl font-normal text-gray-500">${term.hangul}</span></h4>
+                                <p class="text-blue-500 font-semibold mb-2 italic">(${term.pronunciation})</p>
+                                <p class="text-gray-700 font-medium">${term.translation}</p>
+                            </div>`;
+                        });
+                        categoryHtml += `</div>`;
+                        subCategoryWrapper.innerHTML = categoryHtml;
+                        glossaryList.appendChild(subCategoryWrapper);
+                    });
+                });
+            }
+
+            function filterAndSearchGlossary() {
+                const query = document.getElementById('glossarySearch').value.toLowerCase().trim();
+                const selectedCategory = document.getElementById('glossaryFilter').value;
+
+                let filteredData = JSON.parse(JSON.stringify(db.glossary));
+
+                if (selectedCategory !== 'all') {
+                    filteredData.forEach(mainCat => {
+                        mainCat.subCategories = mainCat.subCategories.filter(subCat => subCat.category === selectedCategory);
+                    });
+                }
+                
+                if (query) {
+                     filteredData.forEach(mainCat => {
+                        mainCat.subCategories.forEach(subCat => {
+                            subCat.terms = subCat.terms.filter(term =>
+                                term.korean.toLowerCase().includes(query) ||
+                                term.translation.toLowerCase().includes(query) ||
+                                term.pronunciation.toLowerCase().includes(query) ||
+                                term.hangul.includes(query)
+                            );
+                        });
+                    });
+                }
+                
+                filteredData.forEach(mainCat => {
+                    mainCat.subCategories = mainCat.subCategories.filter(subCat => subCat.terms.length > 0);
+                });
+                filteredData = filteredData.filter(mainCat => mainCat.subCategories.length > 0);
+                
+                displayGlossary(filteredData);
+            }
+
+            displayGlossary(db.glossary);
+            document.getElementById('glossarySearch').addEventListener('input', filterAndSearchGlossary);
+            document.getElementById('glossaryFilter').addEventListener('change', filterAndSearchGlossary);
         }
 
         function renderHistory() {
@@ -429,9 +829,7 @@
             db.history.forEach(item => {
                 historyList.innerHTML += `
                     <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                        <div class="flex justify-between items-start gap-4 mb-2">
-                            <h3 class="text-xl font-semibold text-blue-600 flex-grow">${item.title}</h3>
-                        </div>
+                        <h3 class="text-xl font-semibold text-blue-600 mb-2">${item.title}</h3>
                         <p class="text-gray-700 leading-relaxed">${item.content.replace(/<strong>/g, '<strong class="text-blue-600">')}</p>
                     </div>
                 `;
@@ -443,13 +841,13 @@
             const container = document.getElementById('numbers');
             let content = `<h2 class="text-2xl font-bold text-gray-900 mb-6">Contagem em Coreano</h2>
                            <p class="text-sm text-gray-600 mb-4">O sistema <b>Nativo-Coreano</b> é usado para contagens gerais, como o número de chutes ou alunos (ex: Hana, Dul, Set...). O sistema <b>Sino-Coreano</b> é usado para nomear as formas e graduações (ex: Poomsae Il Jang, 2º DAN) e para números maiores.<br><br><b>Para números intermediários</b>, combine a dezena com a unidade. Ex: 11 (Nativo) = Yeol Hana, 11 (Sino) = Sip-il.</p>
-                           <div class="overflow-x-auto"><table class="w-full text-left"><thead><tr class="border-b-2 border-gray-200">
+                           <div class="overflow-x-auto"><table class="w-full text-left text-sm"><thead><tr class="border-b-2 border-gray-200">
                            <th class="p-2">Número</th><th class="p-2">Nativo-Coreano</th><th class="p-2">Sino-Coreano</th></tr></thead><tbody>`;
             db.numbers.forEach(n => {
                 content += `<tr class="border-b border-gray-100">
                                 <td class="p-2 font-bold">${n.num}</td>
-                                <td class="p-2">${n.kor}<br><i class="text-sm text-blue-600">(${n.pro})</i></td>
-                                <td class="p-2">${n.sino_kor}<br><i class="text-sm text-blue-600">(${n.sino_pro})</i></td>
+                                <td class="p-2">${n.kor}<br><i class="text-xs text-blue-600">(${n.pro})</i></td>
+                                <td class="p-2">${n.sino_kor}<br><i class="text-xs text-blue-600">(${n.sino_pro})</i></td>
                            </tr>`;
             });
             content += '</tbody></table></div>';
@@ -458,52 +856,34 @@
         
         // --- FUNÇÕES DE INTERAÇÃO ---
         function filterAndRender() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const searchInput = document.getElementById('searchInput');
+            if(!searchInput) return;
+            const query = searchInput.value.toLowerCase().trim();
             if (!query) {
                 renderCurriculum(db.curriculum);
                 return;
             }
             const filtered = db.curriculum.map(beltData => {
-                const filteredTechniques = beltData.techniques.filter(tech =>
+                const filteredTechniques = (beltData.techniques || []).filter(tech =>
                     tech.korean.toLowerCase().includes(query) ||
                     tech.translation.toLowerCase().includes(query) ||
-                    tech.pronunciation.toLowerCase().includes(query)
+                    (tech.pronunciation && tech.pronunciation.toLowerCase().includes(query))
                 );
                 return { ...beltData, techniques: filteredTechniques };
-            }).filter(beltData => beltData.techniques.length > 0);
+            }).filter(beltData => {
+                if (beltData.examMaterial) return true; // Always show belts with exam material
+                return beltData.techniques.length > 0;
+            });
             
             renderCurriculum(filtered);
 
-            document.querySelectorAll('.accordion-header').forEach(header => {
-                const content = header.nextElementSibling;
-                header.classList.add('open');
-                content.classList.add('open');
-                content.style.maxHeight = content.scrollHeight + 48 + "px";
-            });
-        }
-
-        function handleShareClick(event) {
-            const shareButton = event.target.closest('.share-btn');
-            if (!shareButton) return;
-
-            const type = shareButton.dataset.shareType;
-            let textToShare = '';
-            const appCredit = '\n\n_Compartilhado pelo Guia Completo de Taekwondo._';
-
-            if (type === 'technique') {
-                const korean = shareButton.dataset.korean;
-                const translation = shareButton.dataset.translation;
-                textToShare = `*Técnica de Taekwondo:*\n\n*${korean}* (${translation})${appCredit}`;
-            } else if (type === 'history') {
-                const title = shareButton.dataset.title;
-                // Remove HTML tags for plain text sharing
-                const content = shareButton.dataset.content.replace(/<[^>]*>?/gm, '');
-                textToShare = `*História do Taekwondo:*\n\n*${title}*\n${content}${appCredit}`;
-            }
-
-            if (textToShare) {
-                const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(textToShare)}`;
-                window.open(whatsappUrl, '_blank');
+            if (query) {
+                document.querySelectorAll('.accordion-header').forEach(header => {
+                    const content = header.nextElementSibling;
+                    header.classList.add('open');
+                    content.classList.add('open');
+                    content.style.maxHeight = content.scrollHeight + 48 + "px";
+                });
             }
         }
     </script>
